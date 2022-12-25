@@ -15,17 +15,10 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <header className="h-24 w-full items-center justify-center border-b">
-                {/* <Navbar /> */}
-                header
-            </header>
 
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
                 <h1 className="text-4xl"> hello friend </h1>
             </main>
-            <footer className="flex h-24 w-full items-center justify-center border-t">
-                footer
-            </footer>
         </>
     );
 }
