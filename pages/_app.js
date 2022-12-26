@@ -1,6 +1,5 @@
 import "../styles/globals.css";
-import { Footer, Navbar } from "@components/navigation";
-import { Hero } from "@components/layout";
+import { Hero, Footer, Navbar } from "@components/index";
 
 export default function App({ Component, pageProps }) {
     return (
