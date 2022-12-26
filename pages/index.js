@@ -1,3 +1,4 @@
+import { FilterBanner } from "@components/index";
 import Head from "next/head";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
             </Head>
 
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
+                <FilterBanner />
                 <h1 className="text-4xl"> hello friend </h1>
             </main>
         </>
