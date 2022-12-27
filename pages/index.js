@@ -1,4 +1,4 @@
-import { FilterBanner } from "@components/index";
+import { FilterBanner, Instagram, Portfolio, Strip } from "@components/index";
 import Head from "next/head";
 
 export default function Home() {
@@ -19,8 +19,12 @@ export default function Home() {
 
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
                 <FilterBanner />
-                <h1 className="text-4xl"> hello friend </h1>
+                <Portfolio />
+                <Strip img={"/images/meander.jpg"} title={"Meander"} subTitle={"Uitgever | Jaar | Details"} text={"Elit esse sunt labore amet ea ullamco. Dolor eiusmod culpa irure minim. Irure Lorem aliqua commodo laborum incididunt exercitation deserunt dolor excepteur exercitation irure elit veniam fugiat."} label={"editorial"} />
+                <Instagram />
             </main>
         </>
     );
 }
+
+
