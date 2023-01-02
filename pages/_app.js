@@ -4,7 +4,7 @@ import { Hero, Footer, Navbar } from "@components/index";
 export default function App({ Component, pageProps }) {
     return (
         <>
-            <header className="h-8 text-center w-full items-center justify-center border-b">
+            <header>
                 <Navbar />
             </header>
             <Hero />
