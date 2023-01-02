@@ -24,7 +24,7 @@ const Navbar = () => {
             }>
                 <ul className={hamburgerOn ?
                     "w-full h-full z-50 flex flex-col items-center justify-center space-y-10 font-bold tracking-widest" :
-                    "border w-full h-full hidden lg:flex justify-center lg:items-center lg:space-x-5 xl:space-x-10 font-thin tracking-wide"
+                    "w-full h-full hidden lg:flex justify-center lg:items-center lg:space-x-5 xl:space-x-10 font-thin tracking-wide"
                 }>
                     {pageList.map(page => (
                         <li key={page.id}>
