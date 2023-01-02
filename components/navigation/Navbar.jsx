@@ -6,7 +6,8 @@ import { useState } from "react";
 import Image from "next/image";
 
 const Navbar = () => {
-    const [hamburgerOn, setHamburgerOn] = useState(false)
+    const [hamburgerMenu, setHamburgerMenu] = useState(false)
+    const [activePage, setActivePage] = useState("home")
     const pageList = [
         {id: 1, name: "home", url: "/"},
         {id: 2, name: "portfolio", url: "/portfolio"},
@@ -14,15 +15,19 @@ const Navbar = () => {
         {id: 4, name: "over mij", url: "/over-mij"},
         {id: 5, name: "contact", url: "/contact"}
     ]
+    const handleClick = (page) => {
+        setActivePage(page)
+        setHamburgerMenu(false)
+    }
 
     return (
         <>
             {/* regular menu */}
-            <nav className={hamburgerOn ?
+            <nav className={hamburgerMenu ?
                 "bg-secondary text-secondary h-screen w-screen z-40 flex flex-col-reverse justify-between items-center" :
                 "bg-secondary text-secondary h-10 flex justify-center items-center"
             }>
-                <ul className={hamburgerOn ?
+                <ul className={hamburgerMenu ?
                     "w-full h-full z-50 flex flex-col items-center justify-center space-y-10 font-bold tracking-widest" :
                     "w-full h-full hidden lg:flex justify-center lg:items-center lg:space-x-5 xl:space-x-10 font-thin tracking-wide"
                 }>
@@ -30,29 +35,34 @@ const Navbar = () => {
                         <li key={page.id}>
                             <IconButton className="rounded-lg" color="inherit">
                                 <Link
-                                    className={hamburgerOn ?
-                                        "text-tertiary hover:text-secondary text-4xl tracking-widest" :
+                                    className={hamburgerMenu ?
+                                        "text-tertiary hover:text-secondary text-4xl tracking-widest" : page.name === activePage ?
+                                        "text-secondary text-xs underline underline-offset-8" :
                                         "text-secondary text-xs"
                                     }
-                                    href={page.url}> {page.name} </Link>
+                                    href={page.url}
+                                    onClick={() => handleClick(page.name)}
+                                >
+                                    {page.name}
+                                </Link>
                             </IconButton>
                         </li>
                     ))}
                 </ul>
-                {hamburgerOn ?
+                {hamburgerMenu ?
                     // show close icon
                     <div className="w-full flex justify-between p-4">
                         <Image src={"/images/icoIrene.png"} alt="logo_icoIrene" width={25} height={25} />
                         <AiOutlineClose
                             className="cursor-pointer text-3xl text-tertiary hover:text-secondary"
-                            onClick={() => setHamburgerOn(!hamburgerOn)}
+                            onClick={() => setHamburgerMenu(false)}
                         />
                     </div> :
                     // show hamburger icon
                     <div className="w-full flex lg:hidden justify-end p-4">
                         <GiHamburgerMenu
                             className="cursor-pointer text-tertiary hover:text-secondary"
-                            onClick={() => setHamburgerOn(!hamburgerOn)}
+                            onClick={() => setHamburgerMenu(true)}
                         />
                     </div>
                 }
