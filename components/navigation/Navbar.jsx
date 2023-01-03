@@ -6,6 +6,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 const Navbar = () => {
+    
     const [hamburgerMenu, setHamburgerMenu] = useState(false)
     const [activePage, setActivePage] = useState("home")
     const pageList = [
@@ -33,7 +34,10 @@ const Navbar = () => {
                 }>
                     {pageList.map(page => (
                         <li key={page.id}>
-                            <IconButton className="rounded-lg" color="inherit">
+                            <IconButton
+                                className="rounded-lg" color="inherit"
+                                onClick={() => handleClick(page.name)}
+                            >
                                 <Link
                                     className={hamburgerMenu ?
                                         "text-tertiary hover:text-secondary text-4xl tracking-widest" : page.name === activePage ?
@@ -41,7 +45,6 @@ const Navbar = () => {
                                         "text-secondary text-xs"
                                     }
                                     href={page.url}
-                                    onClick={() => handleClick(page.name)}
                                 >
                                     {page.name}
                                 </Link>
