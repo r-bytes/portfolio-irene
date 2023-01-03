@@ -32,25 +32,11 @@ const ContactPage = () => {
                 <p className="px-10"> Kitty kitty ears back wide eyed head nudges or stand with legs in litter box, but poop outside pounce on unsuspecting person or always ensure to lay down in such </p>
                 <p className="px-10"> a manner that tail can lightly brush human's nose, so sit in window and stare ooh, a bird, yum. </p>
             </div>
-            {/* <form className="flex-1 h-56">
-                <div className="flex">
-                    <label htmlFor="name"> Name: </label>
-                    <input className="bg-input" type="text" id="name" ref={nameRef} />
-                </div>
-                <div>
-                    <label htmlFor="email"> E-mailadres: </label>
-                    <input className="bg-input" type="text" id="email" ref={emailRef} />
-                </div>
-                <div>
-                    <label htmlFor="message"> Bericht: </label>
-                    <input className="bg-input" type="text" id="message" ref={messageRef} />
-                </div>
-            </form> */}
-            <div className="flex p-10 space-x-20">
+            <div className="flex justify-between items-start p-10 space-x-20 max-w-7xl mx-auto">
                 <form
                     ref={formRef}
                     onSubmit={handleSubmit(onSubmit)}
-                    className="w-2/3"
+                    className="w-2/3 flex flex-col justify-center"
                     // className="mx-4 md:mx-auto rounded flex flex-col p-5 max-w-4xl md:max-w-4xl lg:max-w-5xl xl:max-w-7xl bg-secondary backdrop-blur-3xl shadow-2xl px-12 py-24 mb-24"
                 >
 
@@ -105,12 +91,7 @@ const ContactPage = () => {
                             )}
                     </div>
 
-                    <Button className="items-end" text={"Verzenden"} primary />
-                    {/* <button
-                        type="submit" 
-                        className="shadow-lg hover:bg-button bg-primaryAccent focus:shadow-outline focus:outline-none text-primary text-xs font-bold py-2 px-4 rounded cursor-pointer"
-                    > Verzenden
-                    </button> */}
+                    <Button text={"Verzenden"} primaryFlex />
                 </form>
                 <div className="flex-col text-primary">
                     <h2 className="text-xl mb-2"> Details </h2>
