@@ -1,62 +1,40 @@
 import { useState } from "react"
 
 const FilterBanner = () => {
-    
     const [clickedOn, setClickedOn] = useState(0)
-    return (
-        <div className="w-full">
-            <ul className="bg-primaryAccent h-8 p-2 w-full flex justify-center items-center space-x-2">
-                <span> filter: </span>
-                <li 
-                    className={clickedOn === 0 ?
-                        "cursor-pointer font-bold relative" :
-                        "cursor-pointer relative"
-                    } 
-                    onClick={() => setClickedOn(0)}>
-                        alles
-                    
-                    {clickedOn === 0 ?
-                        <span className="absolute top-5 left-[-50%] border-l-[40px] border-l-transparent border-t-[15px] border-t-accent border-r-[40px] border-r-transparent" />
-                    : "" }
-                </li>
-                <span className="ml-2">|</span>
-                <li 
-                    className={clickedOn === 1 ? "cursor-pointer font-bold relative" : "cursor-pointer relative"} 
-                    onClick={() => setClickedOn(1)}>
-                        editorial
-                        
-                    {clickedOn === 1 ?
-                        <span className="absolute top-5 border-l-[40px] left-[-20%] border-l-transparent border-t-[15px] border-t-accent border-r-[40px] border-r-transparent" />
-                    : "" }
-                </li>
-                <span className="ml-2">|</span>
-                {/* <li 
-                    className={clickedOn === 2 ? "cursor-pointer font-bold relative" : "cursor-pointer relative"} 
-                    onClick={() => setClickedOn(2)}>
-                        strips
+    const tagList = [
+        {id: 1, name: "alles"},
+        {id: 2, name: "editorial"},
+        {id: 3, name: "strips"},
+        {id: 4, name: "eigen werk"},
+        {id: 5, name: "in opdracht"}
+    ]
 
-                    {clickedOn === 2 ?
-                        <span className="absolute top-5 border-l-[40px] left-[-50%] border-l-transparent border-t-[15px] border-t-accent border-r-[40px] border-r-transparent" />
+    return (
+        <div className="w-full bg-primaryAccent min-h-10 flex justify-center items-center">
+            <span> filter: </span>
+            <ul className=" h-full w-full p-2 flex flex-wrap justify-evenly items-center space-x-0 max-w-lg">
+                {tagList.map(tag => (
+                    <li key={tag.id}
+                        className={clickedOn === tag.name ?
+                            "cursor-pointer font-bold relative" :
+                            "cursor-pointer"
+                        } 
+                        onClick={() => setClickedOn(tag.name)}
+                    >
+                        {tag.name}
+                        
+                    {clickedOn === tag.name ?
+                        <span className={tag.name === "eigen werk" ?
+                            `absolute top-8 left-[${tag.position}] border-l-[25px] translate-x-[-140%] border-l-transparent border-t-[7px] border-t-accent border-r-[25px] border-r-transparent` : tag.name === "in opdracht" ?
+                            `absolute top-8 left-[${tag.position}] border-l-[20px] translate-x-[-160%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` : tag.name === "editorial" ?
+                            `absolute top-8 left-[${tag.position}] border-l-[20px] translate-x-[-140%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` : tag.name === "strips" ?
+                            `absolute top-8 left-[${tag.position}] border-l-[20px] translate-x-[-110%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` :
+                            `absolute top-8 left-[${tag.position}] border-l-[20px] translate-x-[-100%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent`
+                        }/>
                     : "" }
-                </li>
-                <span className="ml-2">|</span>
-                <li 
-                    className={clickedOn === 3 ? "cursor-pointer font-bold relative" : "cursor-pointer relative"} 
-                    onClick={() => setClickedOn(3)}>
-                        eigen werk
-                    {clickedOn === 3 ?
-                        <span className="absolute top-5 border-l-[40px] left-[-10%] border-l-transparent border-t-[15px] border-t-accent border-r-[40px] border-r-transparent" />
-                    : "" }
-                </li>
-                <span className="ml-2">|</span>
-                <li 
-                    className={clickedOn === 4 ? "cursor-pointer font-bold relative" : "cursor-pointer relative"} 
-                    onClick={() => setClickedOn(4)}>
-                        in opdracht
-                    {clickedOn === 4 ?
-                        <span className="absolute top-5 border-l-[40px] left-[0%] border-l-transparent border-t-[15px] border-t-accent border-r-[40px] border-r-transparent" />
-                    : "" }
-                </li> */}
+                    </li>
+                ))}
             </ul>
         </div>
     )
