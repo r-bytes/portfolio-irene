@@ -8,11 +8,6 @@ export default {
         title: 'Title',
         type: 'string',
       },
-      {
-        name: 'position',
-        title: 'Position',
-        type: 'string',
-      }
     ],
   }
   

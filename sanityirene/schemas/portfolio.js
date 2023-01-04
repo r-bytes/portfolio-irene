@@ -19,8 +19,8 @@ export default {
         type: 'string',
       },
       {
-        name: 'mainImage',
-        title: 'Main image',
+        name: 'image',
+        title: 'Image',
         type: 'image',
         options: {
           hotspot: true,
@@ -33,9 +33,10 @@ export default {
         of: [{type: 'reference', to: {type: 'tags'}}],
       },
       {
-        name: 'publishedAt',
-        title: 'Published at',
-        type: 'datetime',
+        name: 'tags2',
+        title: 'Tags2',
+        type: 'array',
+        of: [{type: 'string'}],
       },
     ],
   }
