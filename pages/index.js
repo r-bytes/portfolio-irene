@@ -2,20 +2,7 @@ import { FilterBanner, Instagram, Portfolio, Strip } from "@components/index";
 import Head from "next/head";
 import { sanityClient } from "sanity";
 
-export default function Home({ pageList, tagList }) {
-    const portfolioItems = [
-        { id: 1, name: "item1", label: "editorial" },
-        { id: 2, name: "item2", label: "editorial" },
-        { id: 3, name: "item3", label: "editorial" },
-        { id: 4, name: "item4", label: "strips" },
-        { id: 5, name: "item5", label: "strips" },
-        { id: 6, name: "item6", label: "eigen werk" },
-        { id: 7, name: "item7", label: "eigen werk" },
-        { id: 8, name: "item8", label: "in opdracht" },
-        { id: 9, name: "item9", label: "eigen werk" },
-        { id: 10, name: "item10", label: "in opdracht" }
-    ]
-
+export default function Home({ portfolioItems }) {
     return (
         <>
             <Head>
@@ -27,7 +14,7 @@ export default function Home({ pageList, tagList }) {
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
                 <Portfolio
                     portfolioItems={portfolioItems.slice(0, 8)}
-                    tagList={tagList}
+                    // tagList={tagList}
                 />
                 <Strip
                     img={"/images/meander.jpg"}
@@ -43,28 +30,24 @@ export default function Home({ pageList, tagList }) {
 }
 
 export const getServerSideProps = async () => {
-    const queryTags = `
-        *[_type == "tags"] {
-            _id,
-            title
-        }
-    `;
-
-    const queryPages = `
-        *[_type == "pages"] {
+    const queryPortfolio = `
+        *[_type == "portfolio" && tags[0]._ref in *[_type == "tags"]._id]{
             _id,
             title,
-            url
+            subtitle,
+            description,
+            image,
+            "tagList": tags[0..5] -> {
+                title
+            }
         }
     `;
     
-    const tagList = await sanityClient.fetch(queryTags)
-    const pageList = await sanityClient.fetch(queryPages)
+    const portfolioItems = await sanityClient.fetch(queryPortfolio)
     
     return {
         props: {
-            tagList,
-            pageList
+            portfolioItems
         }
     };
 };

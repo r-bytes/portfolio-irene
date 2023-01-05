@@ -17,6 +17,7 @@ export default {
         name: 'description',
         title: 'Description',
         type: 'string',
+        validation: Rule => Rule.required().min(10).max(150)
       },
       {
         name: 'image',
@@ -31,12 +32,6 @@ export default {
         title: 'Tags',
         type: 'array',
         of: [{type: 'reference', to: {type: 'tags'}}],
-      },
-      {
-        name: 'tags2',
-        title: 'Tags2',
-        type: 'array',
-        of: [{type: 'string'}],
       },
     ],
   }
