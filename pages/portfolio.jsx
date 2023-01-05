@@ -3,6 +3,7 @@ import { Portfolio } from "@components/index"
 import { sanityClient } from "sanity";
 
 const PortfolioPage = ({ portfolioItems }) => {
+    console.log(portfolioItems);
     return (
         <div className="flex flex-col justify-center items-center">
             {/* Banner */}
@@ -28,8 +29,8 @@ export const getServerSideProps = async () => {
             subtitle,
             description,
             image,
-            "tagList": tags[0] -> {
-            title
+            "tagList": tags[0..5] -> {
+                title
             }
         }
     `;
