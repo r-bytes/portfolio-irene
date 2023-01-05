@@ -41,16 +41,18 @@ const GridImage = ({ title, subtitle, image, description, tags }) => {
                         {description}
                     </p>
 
-                    {tags.length > 1 ? (tags.map((t, index) => (
-                        <span key={index} className="py-0.5 px-3 border border-black self-start">
-                            {t}
-                        </span>
-                    ))
-                    ) : (
-                        <span className="py-0.5 px-3 border border-black self-start">
-                            {tags[0]}
-                        </span>
-                    )}
+                    <div className="flex flex-wrap gap-3">
+                        {tags.length > 1 ? (tags.map((t, index) => (
+                            <span key={index} className="py-0.5 px-3 border border-black self-start">
+                                {t}
+                            </span>
+                        ))
+                        ) : (
+                            <span className="py-0.5 px-3 border border-black self-start">
+                                {tags[0]}
+                            </span>
+                        )}
+                    </div>
                 </div>
             ) : (
                 ""
