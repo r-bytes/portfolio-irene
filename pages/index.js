@@ -1,8 +1,11 @@
-import { FilterBanner, Instagram, Portfolio, Strip } from "@components/index";
+import { Button, FilterBanner, Instagram, Portfolio, Strip } from "@components/index";
 import Head from "next/head";
-import { sanityClient } from "sanity";
+import { sanityClient, urlFor } from "sanity";
 
-export default function Home({ portfolioItems }) {
+export default function Home({ portfolioItems, featuredPost }) {
+    const verifiedFeaturedPost = featuredPost.find(post => post.hotspot === true)
+    const {title, subtitle, description, image, tagList, buttonText, buttonUrl } = verifiedFeaturedPost
+
     return (
         <>
             <Head>
@@ -14,14 +17,22 @@ export default function Home({ portfolioItems }) {
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
                 <Portfolio
                     portfolioItems={portfolioItems.slice(0, 8)}
-                    // tagList={tagList}
                 />
+                <div className="p-20 flex">
+                    <Button
+                        primary
+                        href={"/portfolio"}
+                        text={"Bekijk alles"}
+                    />
+                </div>
                 <Strip
-                    img={"/images/meander.jpg"}
-                    title={"Meander"}
-                    subTitle={"Uitgever | Jaar | Details"}
-                    text={"Elit esse sunt labore amet ea ullamco. Dolor eiusmod culpa irure minim. Irure Lorem aliqua commodo laborum incididunt exercitation deserunt dolor excepteur exercitation irure elit veniam fugiat."}
-                    label={"editorial"}
+                    image={urlFor(image).url()}
+                    title={title}
+                    subtitle={subtitle}
+                    description={description}
+                    tag={tagList[0].title}
+                    buttonUrl={buttonUrl}
+                    buttonText={buttonText}
                 />
                 <Instagram />
             </main>
@@ -42,12 +53,30 @@ export const getServerSideProps = async () => {
             }
         }
     `;
+
+    const queryFeatured = `
+        *[_type == "featured" && tags[0]._ref in *[_type == "tags"]._id]{
+            _id,
+            title,
+            subtitle,
+            description,
+            hotspot,
+            image,
+            "tagList": tags[0..10] -> {
+                title
+            },
+            buttonUrl,
+            buttonText
+        }
+    `;
     
     const portfolioItems = await sanityClient.fetch(queryPortfolio)
+    const featuredPost = await sanityClient.fetch(queryFeatured)
     
     return {
         props: {
-            portfolioItems
+            portfolioItems,
+            featuredPost
         }
     };
 };
