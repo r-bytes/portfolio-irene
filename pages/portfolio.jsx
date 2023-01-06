@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Portfolio } from "@components/index"
+import { PageBanner, Portfolio } from "@components/index"
 import { sanityClient } from "sanity";
 
-const PortfolioPage = ({ portfolioItems }) => {
+const PortfolioPage = ({ portfolioItems, bannerContent }) => {
+    const { title, subtitle } = bannerContent
     return (
-        <div className="flex flex-col justify-center items-center">
-            <div className="w-full min-h-48 bg-secondaryAccent p-12 flex-col justify-center items-center text-center"> {/* => Page Banner */}
-                <h1 className="text-4xl mb-4"> Portfolio </h1>
-                <p className="px-10"> Kitty kitty ears back wide eyed head nudges or stand with legs in litter box, but poop outside pounce on unsuspecting person or always ensure to lay down in such </p>
-                <p className="px-10"> a manner that tail can lightly brush human's nose, so sit in window and stare ooh, a bird, yum. </p>
-            </div>
+        <div className="flex flex-col justify-center items-center mb-16">
+            <PageBanner
+                title={title}
+                subtitle={subtitle}
+            />
             <Portfolio // => Portfolio
                 portfolioItems={portfolioItems}
             />
@@ -20,7 +20,7 @@ export default PortfolioPage
 
 export const getServerSideProps = async () => {
     const queryPortfolio = `
-        *[_type == "portfolio" && tags[0]._ref in *[_type == "tags"]._id]{
+        *[_type == "portfolio" && tags[0]._ref in *[_type == "tags"]._id]| order(_createdAt desc){
             _id,
             title,
             subtitle,
@@ -32,11 +32,17 @@ export const getServerSideProps = async () => {
         }
     `;
     
+    const queryBanner = `
+        *[_type == "pageBanner" && title == "Portfolio"][0]
+    `;
+    
     const portfolioItems = await sanityClient.fetch(queryPortfolio)
+    const bannerContent = await sanityClient.fetch(queryBanner)
     
     return {
         props: {
-            portfolioItems
+            portfolioItems,
+            bannerContent
         }
     };
 };

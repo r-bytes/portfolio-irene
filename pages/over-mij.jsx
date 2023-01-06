@@ -1,42 +1,48 @@
-import { About } from "@components/index"
+import { About, PageBanner } from "@components/index"
 import { sanityClient, urlFor } from "sanity"
 
 /* eslint-disable react/no-unescaped-entities */
-const OverMijPage = ({ author }) => {
-    const { name, email, phone, bio, image } = author[0]
+const OverMijPage = ({ aboutContent, bannerContent }) => {
+    const { _id, bio, image } = aboutContent
+    const { title, subtitle } = bannerContent
 
     return (
-        <div>
-            <div className="min-h-48 bg-secondaryAccent p-12 flex-col justify-center items-center text-center">
-                <h1 className="text-4xl mb-4"> Over Mij </h1>
-                <p className="px-10"> Kitty kitty ears back wide eyed head nudges or stand with legs in litter box, but poop outside pounce on unsuspecting person or always ensure to lay down in such </p>
-                <p className="px-10"> a manner that tail can lightly brush human's nose, so sit in window and stare ooh, a bird, yum. </p>
-            </div>
+        <>
+            <PageBanner
+                title={title}
+                subtitle={subtitle}
+            />
             <About
                 image={urlFor(image).url()}
                 bio={bio}
+                id={_id}
             />
-        </div>
+        </>
     )
 }
 export default OverMijPage
 
 export const getServerSideProps = async () => {
-    const queryAuthor = `
-        *[_type == "author"]{
+    const queryAbout = `
+        *[_type == "about"][0]{
+            _id,
             bio,
-            email,
-            image,
-            name,
-            phone
+            image
         }
     `;
+
+    const queryBanner = `
+        *[_type == "pageBanner" && title == "Over Mij"][0]
+    `;
     
-    const author = await sanityClient.fetch(queryAuthor)
+    
+    const aboutContent = await sanityClient.fetch(queryAbout)
+    const bannerContent = await sanityClient.fetch(queryBanner)
     
     return {
         props: {
-            author
+            aboutContent,
+            bannerContent
         }
     };
 };
