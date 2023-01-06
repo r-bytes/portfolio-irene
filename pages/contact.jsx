@@ -90,8 +90,9 @@ const ContactPage = () => {
                             <span className="text-red-500"> - Message field is required </span>
                             )}
                     </div>
-
-                    <Button text={"Verzenden"} primaryFlex />
+                    <div className="flex justify-end">
+                        <Button text={"Verzenden"} primaryFlex />
+                    </div>
                 </form>
                 <div className="flex-col text-primary">
                     <h2 className="text-xl mb-2"> Details </h2>

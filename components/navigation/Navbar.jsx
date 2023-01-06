@@ -35,14 +35,15 @@ const Navbar = () => {
                     {pageList.map(page => (
                         <li key={page.id}>
                             <IconButton
-                                className="rounded-lg" color="inherit"
+                                style={{ borderRadius: "0px", padding: "0px"}}
+                                color="inherit"
                                 onClick={() => handleClick(page.name)}
                             >
                                 <Link
                                     className={hamburgerMenu ?
                                         "text-tertiary hover:text-secondary text-4xl tracking-widest" : page.name === activePage ?
-                                        "text-secondary text-xs underline underline-offset-8" :
-                                        "text-secondary text-xs"
+                                        "text-secondary text-sm underline underline-offset-8" :
+                                        "text-secondary text-sm"
                                     }
                                     href={page.url}
                                 >
