@@ -32,5 +32,6 @@ a {
     --color-text-accent: #EC9A00;
     --color-bg-input: #F7F7F7;
     --color-bg-button: #F19E00;
+    --color-bg-hover: #f18900eb;
     --color-bg-card: rgba(110, 104, 114, 0.05);
 }
