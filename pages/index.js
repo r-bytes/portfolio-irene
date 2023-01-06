@@ -1,4 +1,4 @@
-import { Button, FilterBanner, Instagram, Portfolio, Strip } from "@components/index";
+import { Button, Instagram, Portfolio, FeaturedPost } from "@components/index";
 import Head from "next/head";
 import { sanityClient, urlFor } from "sanity";
 
@@ -18,19 +18,19 @@ export default function Home({ portfolioItems, featuredPost }) {
                 <Portfolio
                     portfolioItems={portfolioItems.slice(0, 8)}
                 />
-                <div className="p-20 flex">
+                <div className="m-10 flex">
                     <Button
                         primary
                         href={"/portfolio"}
                         text={"Bekijk alles"}
                     />
                 </div>
-                <Strip
+                <FeaturedPost
                     image={urlFor(image).url()}
                     title={title}
                     subtitle={subtitle}
                     description={description}
-                    tag={tagList[0].title}
+                    tag={tagList[0].title} // first tag only
                     buttonUrl={buttonUrl}
                     buttonText={buttonText}
                 />
@@ -42,7 +42,7 @@ export default function Home({ portfolioItems, featuredPost }) {
 
 export const getServerSideProps = async () => {
     const queryPortfolio = `
-        *[_type == "portfolio" && tags[0]._ref in *[_type == "tags"]._id]{
+        *[_type == "portfolio" && tags[0]._ref in *[_type == "tags"]._id]| order(_createdAt desc){
             _id,
             title,
             subtitle,

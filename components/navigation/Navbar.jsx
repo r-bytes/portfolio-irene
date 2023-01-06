@@ -2,19 +2,29 @@ import Link from "next/link"
 import { IconButton } from '@mui/material';
 import { GiHamburgerMenu } from "react-icons/gi"
 import { AiOutlineClose } from "react-icons/ai"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+    const router = useRouter();
+
+    useEffect(() => {
+        if (router.asPath !== "/") {
+            setActivePage(router.asPath.replace("/", "").replace("-", " "))
+        } else {
+            setActivePage("home")
+        }
+    }, [router.asPath]);
     
     const [hamburgerMenu, setHamburgerMenu] = useState(false)
     const [activePage, setActivePage] = useState("home")
     const pageList = [
-        {id: 1, name: "home", url: "/"},
-        {id: 2, name: "portfolio", url: "/portfolio"},
-        {id: 3, name: "eigen werk", url: "/eigen-werk"},
-        {id: 4, name: "over mij", url: "/over-mij"},
-        {id: 5, name: "contact", url: "/contact"}
+        {_id: 1, title: "home", url: "/"},
+        {_id: 2, title: "portfolio", url: "/portfolio"},
+        {_id: 3, title: "eigen werk", url: "/eigen-werk"},
+        {_id: 4, title: "over mij", url: "/over-mij"},
+        {_id: 5, title: "contact", url: "/contact"}
     ]
     const handleClick = (page) => {
         setActivePage(page)
@@ -32,22 +42,22 @@ const Navbar = () => {
                     "w-full h-full z-50 flex flex-col items-center justify-center space-y-10 font-bold tracking-widest" :
                     "w-full h-full hidden lg:flex justify-center lg:items-center lg:space-x-5 xl:space-x-10 font-thin tracking-wide"
                 }>
-                    {pageList.map(page => (
-                        <li key={page.id}>
+                    {pageList.map(({ page: _id, url, title }) => (
+                        <li key={_id}>
                             <IconButton
                                 style={{ borderRadius: "0px", padding: "0px"}}
                                 color="inherit"
-                                onClick={() => handleClick(page.name)}
+                                onClick={() => handleClick(title)}
                             >
                                 <Link
                                     className={hamburgerMenu ?
-                                        "text-tertiary hover:text-secondary text-4xl tracking-widest" : page.name === activePage ?
+                                        "text-tertiary hover:text-secondary text-4xl tracking-widest" : title === activePage ?
                                         "text-secondary text-sm underline underline-offset-8" :
                                         "text-secondary text-sm"
                                     }
-                                    href={page.url}
+                                    href={url}
                                 >
-                                    {page.name}
+                                    {title}
                                 </Link>
                             </IconButton>
                         </li>

@@ -7,4 +7,4 @@ import tags from "./tags";
 import pageBanner from "./pageBanner";
 import about from "./about";
 
-export const schemaTypes = [author, about, projects, tags, pages, portfolio, featuredPost, pageBanner]
+export const schemaTypes = [author, about, projects, tags, portfolio, featuredPost, pageBanner]

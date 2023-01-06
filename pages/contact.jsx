@@ -1,20 +1,21 @@
-import { Button } from "@components/index";
+import { Button, PageBanner } from "@components/index";
 import emailjs from '@emailjs/browser';
-import { useRef } from "react"
+import React, { useRef } from "react"
 import { useForm } from "react-hook-form"
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
+import { sanityClient } from "sanity";
 
 
 /* eslint-disable react/no-unescaped-entities */
-const ContactPage = () => {
+const ContactPage = ({ bannerContent }) => {
     const formRef = useRef()
     const { register, handleSubmit, formState: {errors} } = useForm()
     // const nameRef = useRef()
     // const emailRef = useRef()
     // const messageRef = useRef()
 
-    const onSubmit = (data) => {
+    const onSubmit = () => {
         setSubmitted(true)
         
         emailjs.sendForm(`${process.env.NEXT_PUBLIC_SID}`, `${process.env.NEXT_PUBLIC_TID}`, formRef.current, `${process.env.NEXT_PUBLIC_PKEY}`)
@@ -24,19 +25,19 @@ const ContactPage = () => {
             console.log(error.text);
         });
     }
+    const { title, subtitle } = bannerContent
 
     return (
         <>
-            <div className="min-h-48 flex-initial bg-secondaryAccent p-12 flex-col justify-center items-center text-center">
-                <h1 className="text-4xl mb-4"> Contact </h1>
-                <p className="px-10"> Kitty kitty ears back wide eyed head nudges or stand with legs in litter box, but poop outside pounce on unsuspecting person or always ensure to lay down in such </p>
-                <p className="px-10"> a manner that tail can lightly brush human's nose, so sit in window and stare ooh, a bird, yum. </p>
-            </div>
-            <div className="flex justify-between items-start p-10 space-x-20 max-w-7xl mx-auto">
+            <PageBanner
+                title={title}
+                subtitle={subtitle}
+            />
+            <div className="flex flex-col md:flex-row justify-between items-start p-10 space-x-20 max-w-7xl mx-auto">
                 <form
                     ref={formRef}
                     onSubmit={handleSubmit(onSubmit)}
-                    className="w-2/3 flex flex-col justify-center"
+                    className="w-5/6 md:w-2/3 flex flex-col mx-auto justify-center order-2 md:order-1"
                     // className="mx-4 md:mx-auto rounded flex flex-col p-5 max-w-4xl md:max-w-4xl lg:max-w-5xl xl:max-w-7xl bg-secondary backdrop-blur-3xl shadow-2xl px-12 py-24 mb-24"
                 >
 
@@ -44,7 +45,7 @@ const ContactPage = () => {
                         <span className="text-primary text-xs font-bold tracking-wider ml-1"> Name </span><span className="text-xs"> (verplicht) </span>
                         <input
                             {...register("name", {required: true})}
-                            className="text-secondary shadow-lg border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#7831c4] focus:ring"
+                            className="text-secondary shadow-lg border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                             id="name"
                             type="text"
                             placeholder="Alice Wonderland"
@@ -61,7 +62,7 @@ const ContactPage = () => {
                                     message: "invalid email address"
                                 }}
                             )}
-                            className="text-secondary shadow-lg border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#7831c4] focus:ring"
+                            className="text-secondary shadow-lg border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                             id="email"
                             type="text"
                             placeholder="a@wonderland.com"
@@ -72,7 +73,7 @@ const ContactPage = () => {
                         <span className="text-primary text-xs font-bold tracking-wider ml-1"> Bericht </span><span className="text-xs"> (verplicht) </span>
                         <textarea
                             {...register("comment", {required: true})}
-                            className="text-secondary shadow-lg border rounded py-2 px-3 form-textarea mt-1 block w-full outline-none ring-[#7831c4] focus:ring"
+                            className="text-secondary shadow-lg border rounded py-2 px-3 form-textarea mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                             id="message"
                             rows={10}
                         />
@@ -94,7 +95,7 @@ const ContactPage = () => {
                         <Button text={"Verzenden"} primaryFlex />
                     </div>
                 </form>
-                <div className="flex-col text-primary">
+                <div className="hidden md:flex md:flex-col text-primary order-1 md:order-2">
                     <h2 className="text-xl mb-2"> Details </h2>
                     <span className="block">
                         <MdOutlineEmail className="inline-block mr-2 text-accent" />
@@ -110,3 +111,17 @@ const ContactPage = () => {
     )
 }
 export default ContactPage
+
+export const getServerSideProps = async () => {
+    const queryBanner = `
+        *[_type == "pageBanner" && title == "Contact"][0]
+    `;
+    
+    const bannerContent = await sanityClient.fetch(queryBanner)
+    
+    return {
+        props: {
+            bannerContent
+        }
+    };
+};

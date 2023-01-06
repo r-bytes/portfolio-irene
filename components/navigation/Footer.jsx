@@ -11,13 +11,18 @@ const Footer = () => {
         { id: 3, url: "https://dribbble.com/gladyspnut" }
     ]
     return (
-        <div className="w-full min-h-56 bg-secondary mt-32 flex flex-col sm:flex-row sm:justify-between pt-12 relative">
-            <div className="w-1/3">
-                <Image src={"/images/mijnlogo-white.png"} alt="heroimageB.jpg" width={500} height={500} className="items-start w-full object-contain h-10 sm:h-20 absolute left-[35%] sm:left-[-35%]" />
+        <div className="p-10 z-50 w-full bg-secondary flex flex-col md:flex-row">
+            <div className="md:w-1/3 p-10 mx-auto">
+                <Image
+                    src={"/images/mijnlogo-white.png"}
+                    alt="heroimageB.jpg"
+                    width={125}
+                    height={125}
+                />
             </div>
-            <div className="w-1/3 px-4 tracking-wider pb-12">
+            <div className="md:w-2/3 p-10 tracking-wider text-center md:text-left">
                 <h3 className="text-lg text-accent mb-4"> Beschikbaar voor editorial werk blabla lorum ipsum tra. Wat doe ik eigenlijk?  </h3>
-                <div className="flex flex-row sm:flex-col text-accent">
+                <div className="flex flex-col text-accent"> {/* Icon Container*/}
                     <span className="block">
                         <MdOutlineEmail className="inline-block mr-2" />
                         <h4 className="text-white text-xs inline-block"> info@ireneberbee.nl </h4>
@@ -28,7 +33,7 @@ const Footer = () => {
                     </span>
                 </div>
             </div>
-            <div className="w-1/3 flex space-x-4 justify-center">
+            <div className="md:w-1/3 flex justify-center p-10">
                 {socialUrls.map(s => (
                     <SocialIcon
                         style={{ height: 25, width: 25, marginRight: ".5em" }}

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, FilterBanner, GridImage } from "@components/index"
+import { GridImage } from "@components/index"
 import { BsFilter } from "react-icons/bs"
 
 const Portfolio = ({ portfolioItems }) => {
@@ -21,7 +21,7 @@ const Portfolio = ({ portfolioItems }) => {
         <GridImage
             key={p._id}
             title={p.title}
-            subtitle={p.subtitle}
+            subtitle={p.subtitle}x
             image={p.image}
             description={p.description}
             tags={p.tagList.map(t => t.title)}
@@ -70,7 +70,7 @@ const Portfolio = ({ portfolioItems }) => {
                     <BsFilter className="text-md" />
                 </ul>
             </div>
-            <div className="max-w-7xl px-10 my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12"> {/* => Show Grid Items */}
+            <div className="max-w-7xl px-5 sm:px-10 pt-10 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12"> {/* => Show Grid Items */}
                 {allGridItems}
             </div>
         </>
