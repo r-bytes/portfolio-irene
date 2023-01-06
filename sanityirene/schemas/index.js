@@ -1,8 +1,10 @@
 import author from "./author";
-import featured from "./featured";
+import featuredPost from "./featuredPost";
 import pages from "./pages";
 import portfolio from "./portfolio";
-import projects from "./projects";
+import projects from "./work";
 import tags from "./tags";
+import pageBanner from "./pageBanner";
+import about from "./about";
 
-export const schemaTypes = [author, projects, tags, pages, portfolio, featured]
+export const schemaTypes = [author, about, projects, tags, pages, portfolio, featuredPost, pageBanner]

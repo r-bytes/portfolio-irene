@@ -35,11 +35,6 @@ export default {
         hotspot: true,
       },
     },
-    {
-      name: 'bio',
-      title: 'Bio',
-      type: 'text',
-    },
   ],
   preview: {
     select: {
