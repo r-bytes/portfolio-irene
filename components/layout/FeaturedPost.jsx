@@ -1,7 +1,7 @@
 import { Button } from "@components/index"
 import Image from "next/image"
 
-const Strip = ({ image, title, subtitle, description, tag, buttonText, buttonUrl }) => {
+const FeaturedPost = ({ image, title, subtitle, description, tag, buttonText, buttonUrl }) => {
     return (
         <div className="w-full h-[28rem] flex">
             <div className="w-2/4">
@@ -27,4 +27,4 @@ const Strip = ({ image, title, subtitle, description, tag, buttonText, buttonUrl
         </div>
     )
 }
-export default Strip
+export default FeaturedPost

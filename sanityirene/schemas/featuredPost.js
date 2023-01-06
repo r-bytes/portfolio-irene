@@ -1,6 +1,6 @@
 export default {
-    name: 'featured',
-    title: 'Featured',
+    name: 'featuredPost',
+    title: 'Featured Post',
     type: 'document',
     fields: [
         {
@@ -48,11 +48,10 @@ export default {
             title: 'Button Url',
             type: 'url',
             description: `Can be a path starting with a '/' or a full Url starting with 'http://' or 'https://'`,
-            validation: (Rule) =>
-              Rule.uri({
+            validation: (Rule) => Rule.uri({
                 allowRelative: true,
                 scheme: ['http', 'https', 'mailto', 'tel'],
-              }),
+            }),
           },
     ],
   }
