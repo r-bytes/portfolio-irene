@@ -9,6 +9,16 @@ export default {
       type: 'string',
     },
     {
+        name: 'email',
+        title: 'Email',
+        type: 'string',
+    },
+    {
+        name: 'phone',
+        title: 'Phone',
+        type: 'string',
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -28,15 +38,7 @@ export default {
     {
       name: 'bio',
       title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      type: 'text',
     },
   ],
   preview: {
