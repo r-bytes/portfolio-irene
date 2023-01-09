@@ -11,10 +11,6 @@ const PortfolioItem = ({ portfolioItem }) => {
     const { title, subtitle, image, description, tagList } = portfolioItem[0]
     console.log(urlFor(image).url)
 
-    // let currentItem = portfolioItem.map(p => (
- 
-    // ))
-
     return (
         <div className="p-20 text-center">
             <div className="max-w-7xl mx-auto">
