@@ -6,5 +6,6 @@ import projects from "./work";
 import tags from "./tags";
 import pageBanner from "./pageBanner";
 import about from "./about";
+import socials from "./socials";
 
 export const schemaTypes = [author, about, projects, tags, portfolio, featuredPost, pageBanner]
