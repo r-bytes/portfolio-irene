@@ -16,7 +16,7 @@ export default function Home({ portfolioItems, featuredPost }) {
             </Head>
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
                 <Portfolio
-                    portfolioItems={portfolioItems.slice(0, 8)}
+                    portfolioItems={portfolioItems.slice(1, 9)}
                 />
                 <div className="m-10 flex">
                     <Button

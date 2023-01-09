@@ -6,10 +6,11 @@ import { BsFillTelephoneFill } from "react-icons/bs"
 
 const Footer = () => {
     const socialUrls = [
-        { id: 1, url: "https://www.instagram.com/gladyspnut/" },
-        { id: 2, url: "https://www.facebook.com/gladyspnut/" },
-        { id: 3, url: "https://dribbble.com/gladyspnut" }
+        { id: 1, url: "https://www.facebook.com/ireneberbee.comic" },
+        { id: 2, url: "https://www.facebook.com/ComicsandIllustration" },
+        { id: 3, url: "https://www.instagram.com/ireneberbee/" }
     ]
+
     return (
         <div className="p-10 z-50 w-full bg-secondary flex flex-col md:flex-row">
             <div className="md:w-1/3 p-10 mx-auto">
@@ -38,8 +39,8 @@ const Footer = () => {
                     <SocialIcon
                         style={{ height: 25, width: 25, marginRight: ".5em" }}
                         key={s.id}
-                        bgColor="white"
-                        fgColor="black"
+                        bgColor={s.id === 2 ? "orange" : "white"}
+                        fgColor={s.id === 2 ? "white" : "black"}
                         url={s.url}
                     />
                 ))}

@@ -47,6 +47,7 @@ const Portfolio = ({ portfolioItems }) => {
         <>
             <div className="w-full bg-primaryAccent min-h-10 flex justify-center items-center"> {/* => FilterBanner */}
                 <ul className=" h-full w-full p-2 flex flex-wrap justify-center space-x-3 items-center max-w-lg">
+                    <span> filter: </span>
                     {tagList?.map(tag => ( // Tag Labels (filter)
                         <li key={tag.id}
                             className={clickedOn === tag.name ?
@@ -67,8 +68,6 @@ const Portfolio = ({ portfolioItems }) => {
                             }
                         </li>
                     ))}
-                    
-                    <BsFilter className="text-md" />
                 </ul>
             </div>
             <div className="max-w-7xl px-5 sm:px-10 pt-10 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12"> {/* => Show Grid Items */}

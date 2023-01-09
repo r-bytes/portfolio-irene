@@ -65,8 +65,8 @@ const Navbar = () => {
                 </ul>
                 {hamburgerMenu ?
                     // show close icon
-                    <div className="w-full flex justify-between p-4">
-                        <Image src={"/images/icoIrene.png"} alt="logo_icoIrene" width={25} height={25} />
+                    <div className="w-full flex items-start justify-between p-6">
+                        <Image src={"/images/mijnlogo-white.png"} alt="logo_icoIrene" width={100} height={100} />
                         <AiOutlineClose
                             className="cursor-pointer text-3xl text-tertiary hover:text-secondary"
                             onClick={() => setHamburgerMenu(false)}

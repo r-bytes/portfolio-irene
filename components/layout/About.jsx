@@ -2,16 +2,17 @@ import Image from "next/image"
 
 const About = ({ bio, image }) => {
     return (
-        <div className="flex justify-center items-center mx-auto py-20 max-w-5xl">
-            <div className="w-2/3 text-primary m-12">
-                <p className="max-w-2xl pl-10 leading-6 tracking-wider">
+        <div className="flex flex-col lg:flex-row justify-between items-center mx-auto p-10 lg:p-20 max-w-5xl">
+            <div className="order-2 lg:w-5/6 text-primary">
+                <p className="text-center mx-auto lg:text-left leading-6 tracking-wider">
                     {bio}
                 </p>
             </div>
-            <div className="self-start w-2/3 m-12">
+            <div className="order-1 lg:order-2 lg:w-2/3 mb-10">
                 <Image
-                    width={1000}
-                    height={100}
+                    className="w-full lg:ml-16 lg:pr-10"
+                    width={500}
+                    height={500}
                     src={image}
                     alt={image}
                 />

@@ -5,12 +5,12 @@ import { urlFor } from "sanity"
 const GridImage = ({ title, subtitle, image, description, tags }) => {
     const [hoveredOn, setHoveredOn] = useState(false)
     return (
-        <div className="group rounded mx-auto flex flex-col shadow-2xl relative"
+        <div className="group mx-auto flex flex-col relative"
             onMouseEnter={() => setHoveredOn(!hoveredOn)}
             onMouseLeave={() => setHoveredOn(!hoveredOn)}
         >
             
-            <div className="rounded max-w-sm max-h-sm"> {/* => Card Image */}
+            <div className="max-w-sm max-h-sm"> {/* => Card Image */}
                 <Image
                     className="object-cover max-h-96 w-full"
                     alt={image}
@@ -22,14 +22,14 @@ const GridImage = ({ title, subtitle, image, description, tags }) => {
             </div>
             {hoveredOn ? ( // => Card Overlay
                 <div
-                    className="absolute w-full h-full min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out
+                    className="absolute w-full h-full text-primary min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out
                         text-left p-6 flex flex-col justify-evenly"
                 >
                     <div>
                         <h1 className="text-xl font-semibold"> {title} </h1>
                         <h3 className="text-sm mb-2"> {subtitle} </h3>
                     </div>
-                    <p className="text-tertiary mb-3 leading-7 text-md">
+                    <p className="mb-3 leading-7 text-md">
                         {description}
                     </p>
 
