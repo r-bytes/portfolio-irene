@@ -20,6 +20,7 @@ const Portfolio = ({ portfolioItems }) => {
     let allGridItems = gridItems.map(p => (
         <GridImage
             key={p._id}
+            id={p._id}
             title={p.title}
             subtitle={p.subtitle}x
             image={p.image}

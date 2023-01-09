@@ -1,9 +1,13 @@
 import { useState } from "react"
 import Image from "next/image"
 import { urlFor } from "sanity"
+import { useRouter } from "next/router"
 
-const GridImage = ({ title, subtitle, image, description, tags }) => {
+
+const GridImage = ({ id, title, subtitle, image, description, tags }) => {
     const [hoveredOn, setHoveredOn] = useState(false)
+    const navigateTo = useRouter().push
+
     return (
         <div className="group mx-auto flex flex-col relative"
             onMouseEnter={() => setHoveredOn(!hoveredOn)}
@@ -22,8 +26,9 @@ const GridImage = ({ title, subtitle, image, description, tags }) => {
             </div>
             {hoveredOn ? ( // => Card Overlay
                 <div
-                    className="absolute w-full h-full text-primary min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out
+                    className="cursor-pointer absolute w-full h-full text-primary min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out
                         text-left p-6 flex flex-col justify-evenly"
+                    onClick={() => navigateTo(`/portfolio/${id}`)}
                 >
                     <div>
                         <h1 className="text-xl font-semibold"> {title} </h1>

@@ -38,7 +38,6 @@ const ContactPage = ({ bannerContent }) => {
                     ref={formRef}
                     onSubmit={handleSubmit(onSubmit)}
                     className="w-5/6 md:w-2/3 flex flex-col mx-auto justify-center order-2 md:order-1"
-                    // className="mx-4 md:mx-auto rounded flex flex-col p-5 max-w-4xl md:max-w-4xl lg:max-w-5xl xl:max-w-7xl bg-secondary backdrop-blur-3xl shadow-2xl px-12 py-24 mb-24"
                 >
 
                     <label className="block mb-5" htmlFor="name">
@@ -48,7 +47,6 @@ const ContactPage = ({ bannerContent }) => {
                             className="text-primary shadow-lg border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                             id="name"
                             type="text"
-                            placeholder="Alice Wonderland"
                         />
                     </label>
 
@@ -65,7 +63,6 @@ const ContactPage = ({ bannerContent }) => {
                             className="text-primary shadow-lg border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                             id="email"
                             type="text"
-                            placeholder="a@wonderland.com"
                         />
                     </label>
 
