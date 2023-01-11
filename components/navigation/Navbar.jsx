@@ -52,8 +52,8 @@ const Navbar = () => {
                                 <Link
                                     className={hamburgerMenu ?
                                         "text-tertiary hover:text-secondary text-4xl tracking-widest" : title === activePage ?
-                                        "text-secondary text-sm underline underline-offset-8" :
-                                        "text-secondary text-sm"
+                                        "text-secondary text-[16px] underline underline-offset-8" :
+                                        "text-secondary text-[16px]"
                                     }
                                     href={url}
                                 >

@@ -3,8 +3,8 @@ import { SocialIcon } from "react-social-icons"
 
 const Hero = () => {
     const socialUrls = [
-        { id: 1, url: "https://www.facebook.com/ireneberbee.comic" },
-        { id: 2, url: "https://www.facebook.com/ComicsandIllustration" },
+        // { id: 1, url: "https://www.facebook.com/ireneberbee.comic" },
+        { id: 1, url: "https://www.facebook.com/ComicsandIllustration" },
         { id: 3, url: "https://www.instagram.com/ireneberbee/" }
     ]
 
