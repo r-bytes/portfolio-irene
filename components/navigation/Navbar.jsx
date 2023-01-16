@@ -42,18 +42,17 @@ const Navbar = () => {
                     "w-full h-full z-50 flex flex-col items-center justify-center space-y-10 font-bold tracking-widest" :
                     "w-full h-full hidden lg:flex justify-center lg:items-center lg:space-x-5 xl:space-x-10 font-thin tracking-wide"
                 }>
-                    {pageList.map(({ page: _id, url, title }) => (
-                        <li key={_id}>
+                    {pageList.map(({ page: _id, url, title }, index) => (
+                        <li key={index}>
                             <IconButton
                                 style={{ borderRadius: "0px", padding: "0px"}}
                                 color="inherit"
                                 onClick={() => handleClick(title)}
                             >
                                 <Link
-                                    className={hamburgerMenu ?
-                                        "text-tertiary hover:text-secondary text-4xl tracking-widest" : title === activePage ?
-                                        "text-secondary text-[16px] underline underline-offset-8" :
-                                        "text-secondary text-[16px]"
+                                    className={hamburgerMenu ? "text-tertiary hover:text-secondary text-4xl tracking-widest"
+                                        : title === activePage ? "text-secondary text-[16px] underline underline-offset-8"
+                                        : "text-secondary text-[16px]"
                                     }
                                     href={url}
                                 >

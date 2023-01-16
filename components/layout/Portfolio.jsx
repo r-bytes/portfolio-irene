@@ -1,10 +1,37 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { GridImage } from "@components/index"
-import { BsFilter } from "react-icons/bs"
+import { useStateContext } from "context/StateContext"
+
 
 const Portfolio = ({ portfolioItems }) => {
-    const [clickedOn, setClickedOn] = useState("")
+    const {clickedOn, setClickedOn} = useStateContext()
+    const handleClick = (tagName) => {
+        setClickedOn(tagName) // set clicked item in context
+        
+        tagName === "alles" ? setGridItems(portfolioItems)
+        : setGridItems(portfolioItems.filter(item => {
+            if (item.tagList.length >= 2) { // => Image has Multiple tags
+                return item.tagList.find(el => el.title === tagName)
+
+            } else { // => Image has just One tags
+                return item.tagList[0].title === tagName
+            }
+        }))
+    }
+
+    useEffect(() => {
+        if (clickedOn) {
+            setClickedOn(clickedOn)
+            handleClick(clickedOn)
+        } else {
+            setClickedOn("alles")
+            handleClick("alles")
+        }
+    
+    }, [clickedOn])
+    
     const [gridItems, setGridItems] = useState(portfolioItems)
+
     const tagList = [
         {id: 1, name: "alles"},
         {id: 2, name: "|"},
@@ -17,6 +44,8 @@ const Portfolio = ({ portfolioItems }) => {
         {id: 9, name: "in opdracht"}
     ]
     
+
+
     let allGridItems = gridItems.map(p => (
         <GridImage
             key={p._id}
@@ -26,23 +55,10 @@ const Portfolio = ({ portfolioItems }) => {
             image={p.image}
             description={p.description}
             tags={p.tagList.map(t => t.title)}
+            handleClick={() => handleClick()}
         />
     ))
 
-    const handleClick = (tagName) => {
-        setClickedOn(tagName)
-        
-        tagName === "alles" ?
-        setGridItems(portfolioItems) :
-        setGridItems(portfolioItems.filter(item => {
-            if (item.tagList.length >= 2) { // => Image has Multiple tags
-                return item.tagList.find(el => el.title === tagName)
-
-            } else { // => Image has just One tags
-                return item.tagList[0].title === tagName
-            }
-        }))
-    }
 
     return (
         <>
@@ -57,14 +73,14 @@ const Portfolio = ({ portfolioItems }) => {
                             }
                             onClick={() => handleClick(tag.name)}
                         >
-                            {tag.name}
+                            {tag.name} 
                             {clickedOn === tag.name ? // Absolute Styling (triangle)
-                                <span className={tag.name === "eigen werk" ?
-                                    `hidden sm:inline-block absolute top-8 border-l-[25px] translate-x-[-140%] border-l-transparent border-t-[7px] border-t-accent border-r-[25px] border-r-transparent` : tag.name === "in opdracht" ?
-                                    `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-160%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` : tag.name === "editorial" ?
-                                    `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-140%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` : tag.name === "strips" ?
-                                    `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-110%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` :
-                                    `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-100%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent`
+                                <span className={tag.name === "eigen werk"
+                                    ? `hidden sm:inline-block absolute top-8 border-l-[25px] translate-x-[-140%] border-l-transparent border-t-[7px] border-t-accent border-r-[25px] border-r-transparent`
+                                    : tag.name === "in opdracht" ? `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-160%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` 
+                                    : tag.name === "editorial" ? `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-140%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` 
+                                    : tag.name === "strips" ? `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-110%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent` 
+                                    : `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-100%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent`
                                 }/> : "" 
                             }
                         </li>

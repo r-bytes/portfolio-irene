@@ -12,16 +12,17 @@ const Footer = () => {
     ]
 
     return (
-        <div className="p-10 z-50 w-full bg-secondary flex flex-col md:flex-row">
-            <div className="md:w-1/3 p-10 mx-auto">
+        <div className="p-10 z-50 w-full bg-secondary flex flex-col md:flex-row justify-center items-center md:items-start md:gap-10">
+            <div className="md:w-1/3 my-10">
                 <Image
+                    className="w-44 mx-auto"
                     src={"/images/mijnlogo-white.png"}
                     alt="heroimageB.jpg"
-                    width={125}
-                    height={125}
+                    width={150}
+                    height={150}
                 />
             </div>
-            <div className="md:w-2/3 p-10 tracking-wider text-center md:text-left">
+            <div className="md:w-2/3 mt-10 tracking-wider text-center md:text-left">
                 <h3 className="text-lg text-accent mb-4"> Beschikbaar voor editorial werk blabla lorum ipsum tra. Wat doe ik eigenlijk?  </h3>
                 <div className="flex flex-col text-accent"> {/* Icon Container*/}
                     <span className="block">
@@ -34,10 +35,10 @@ const Footer = () => {
                     </span>
                 </div>
             </div>
-            <div className="md:w-1/3 flex justify-center p-10">
+            <div className="md:w-1/3 flex justify-center mt-10">
                 {socialUrls.map(s => (
                     <SocialIcon
-                        style={{ height: 25, width: 25, marginRight: ".5em" }}
+                        style={{ height: 40, width: 40, marginRight: "1em" }}
                         key={s.id}
                         bgColor={s.id === 2 ? "orange" : "white"}
                         fgColor={s.id === 2 ? "white" : "black"}

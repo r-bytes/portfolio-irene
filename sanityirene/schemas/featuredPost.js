@@ -33,12 +33,6 @@ export default {
             },
         },
         {
-            name: 'tags',
-            title: 'Tags',
-            type: 'array',
-            of: [{type: 'reference', to: {type: 'tags'}}],
-        },
-        {
             name: 'buttonText',
             title: 'Button Text',
             type: 'string'
