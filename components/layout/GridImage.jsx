@@ -1,14 +1,15 @@
-import { useState } from "react"
 import Image from "next/image"
 import { urlFor } from "sanity"
 import { useRouter } from "next/router"
 import { useStateContext } from "context/StateContext"
+import { useHover } from "@hooks/index"
+
 
 
 const GridImage = ({ id, title, subtitle, image, description, tags }) => {
-    const [hoveredOn, setHoveredOn] = useState(false)
     const navigateTo = useRouter().push
     const {setClickedOn} = useStateContext()
+    const [hovered, hoverRef] = useHover()
 
     const handleClick = (tagName) => {
         setClickedOn(tagName) // set clicked item in context
@@ -16,11 +17,10 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
     }
 
     return (
-        <div className="group mx-auto flex flex-col relative"
-            onMouseEnter={() => setHoveredOn(!hoveredOn)}
-            onMouseLeave={() => setHoveredOn(!hoveredOn)}
+        <div
+            className="group mx-auto flex flex-col relative"
+            ref={hoverRef}
         >
-            
             <div className="max-w-sm max-h-sm"> {/* => Card Image */}
                 <Image
                     className="object-cover max-h-96 w-full"
@@ -31,7 +31,7 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
                     priority={true}
                 />
             </div>
-            {hoveredOn ? ( // => Card Overlay
+            {hovered ? ( // => Card Overlay
                 <div className="absolute w-full h-full text-primary min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out text-left p-6 flex flex-col justify-evenly">
                     <div 
                         className="cursor-pointer" 
