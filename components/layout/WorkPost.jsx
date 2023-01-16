@@ -18,6 +18,7 @@ const WorkPost = ({ items }) => {
                     >
                         <h2 className="font-bold px-4 pt-10"> {title} </h2>
                         <Image
+                            className="w-auto"
                             height={250}
                             width={250}
                             src={imageUrl}

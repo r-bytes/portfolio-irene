@@ -67,9 +67,9 @@ const Portfolio = ({ portfolioItems }) => {
                     <span className="text-[#000]/50"> filter: </span>
                     {tagList?.map(tag => ( // Tag Labels (filter)
                         <li key={tag.id}
-                            className={clickedOn === tag.name ?
-                                "cursor-pointer font-bold relative" :
-                                "cursor-pointer"
+                            className={clickedOn === tag.name
+                                ? "cursor-pointer font-bold relative "
+                                : "cursor-pointer hover:text-black/60"
                             }
                             onClick={() => handleClick(tag.name)}
                         >

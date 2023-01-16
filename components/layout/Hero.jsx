@@ -1,8 +1,10 @@
 import { IconButton } from "@material-ui/core"
 import Image from "next/image"
+import { useRouter } from "next/router"
 import { SocialIcon } from "react-social-icons"
 
 const Hero = () => {
+    const navigateTo = useRouter().push
     const socialUrls = [
         // { id: 1, url: "https://www.facebook.com/ireneberbee.comic" },
         { id: 1, url: "https://www.facebook.com/ComicsandIllustration" },
@@ -11,7 +13,15 @@ const Hero = () => {
 
     return (
         <div className="w-full min-h-fit relative">
-            <Image src={"/images/heroimageB.jpg"} alt="heroimageB.jpg" width={1000} height={1000} className="w-full h-[18rem] lg:h-[20rem] object-cover" />
+            <Image
+                src={"/images/heroimageB.jpg"}
+                alt="heroimageB.jpg"
+                width={1000}
+                height={1000}
+                className="hover:cursor-pointer w-full h-[18rem] lg:h-[20rem] object-cover"
+                onClick={() => navigateTo("/")}
+
+            />
             <div>
                 <Image
                     src={"/images/mijnlogo-white.png"}
