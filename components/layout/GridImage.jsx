@@ -2,11 +2,18 @@ import { useState } from "react"
 import Image from "next/image"
 import { urlFor } from "sanity"
 import { useRouter } from "next/router"
+import { useStateContext } from "context/StateContext"
 
 
 const GridImage = ({ id, title, subtitle, image, description, tags }) => {
     const [hoveredOn, setHoveredOn] = useState(false)
     const navigateTo = useRouter().push
+    const {setClickedOn} = useStateContext()
+
+    const handleClick = (tagName) => {
+        setClickedOn(tagName) // set clicked item in context
+        // navigateTo("/portfolio") => (slice produces a bug)
+    }
 
     return (
         <div className="group mx-auto flex flex-col relative"
@@ -25,14 +32,13 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
                 />
             </div>
             {hoveredOn ? ( // => Card Overlay
-                <div
-                    className="cursor-pointer absolute w-full h-full text-primary min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out
-                        text-left p-6 flex flex-col justify-evenly"
-                    onClick={() => navigateTo(`/portfolio/${id}`)}
-                >
-                    <div>
-                        <h1 className="text-xl font-semibold"> {title} </h1>
-                        <h3 className="text-sm mb-2"> {subtitle} </h3>
+                <div className="absolute w-full h-full text-primary min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out text-left p-6 flex flex-col justify-evenly">
+                    <div 
+                        className="cursor-pointer" 
+                        onClick={() => navigateTo(`/portfolio/${id}`)}
+                    >
+                        <h1 className="text-xl font-semibold hover:text-secondary"> {title} </h1>
+                        <h3 className="text-sm mb-2 hover:text-secondary"> {subtitle} </h3>
                     </div>
                     <p className="mb-3 leading-7 text-md">
                         {description}
@@ -40,12 +46,19 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
 
                     <div className="flex flex-wrap gap-3">
                         {tags.length > 1 ? (tags.map((t, index) => ( // => Object has Multiply tags
-                            <span key={index} className="py-0.5 px-3 border border-black self-start">
+                            <span
+                                key={index}
+                                className="py-0.5 px-3 border border-black self-start hover:cursor-pointer"
+                                onClick={t !== "undefined" ? () => handleClick(t) : ""}
+                            >
                                 {t}
                             </span>
                         ))
                         ) : ( // => Object has just 1 tag
-                            <span className="py-0.5 px-3 border border-black self-start">
+                            <span
+                                className="py-0.5 px-3 border border-black self-start hover:cursor-pointer"
+                                onClick={() => handleClick(tags[0])}
+                            >
                                 {tags[0]}
                             </span>
                         )}
