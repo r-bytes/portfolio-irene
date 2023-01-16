@@ -16,9 +16,9 @@ const Button = ({ text, href, primary, primaryFlex, notAllowed }) => {
             <IconButton style={{ borderRadius: "0px", padding: "0px"}}>
                 <Link
                     className={primary ?
-                        "px-4 py-2.5 bg-button hover:bg-hover text-primary uppercase font-semibold text-xs tracking-wider" : primaryFlex ?
-                        "px-4 py-2.5 bg-button hover:bg-hover text-primary uppercase font-semibold text-xs tracking-wider place-self-end" :
-                        "px-4 py-2.5 bg-none hover:bg-hover text-secondary uppercase font-extralight text-xs tracking-wider cursor-none"
+                        "px-4 py-2.5 bg-button text-primary uppercase font-semibold text-xs tracking-wider transform transition-transform hover:scale-105 duration-500" : primaryFlex ?
+                        "px-4 py-2.5 bg-button text-primary uppercase font-semibold text-xs tracking-wider place-self-end transform transition-transform hover:scale-105 duration-500" :
+                        "px-4 py-2.5 bg-none text-secondary uppercase font-extralight text-xs tracking-wider cursor-none transform transition-transform hover:scale-105 duration-500"
                     }
                     href={href ? href : ""}
                 >

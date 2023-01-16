@@ -19,8 +19,11 @@ const FeaturedPost = ({ image, title, subtitle, description, tag, buttonText, bu
                     <h3 className="font-thin pb-8"> {subtitle} </h3>
                     <p className="pb-8"> {description} </p>
                     <div className="flex gap-1 justify-center items-center">
-                        <Button text={tag} notAllowed />
-                        <Button text={buttonText} href={buttonUrl} primary />
+                        {   // show button only when button text exists
+                            buttonText.length
+                            ? <Button text={buttonText} href={buttonUrl} primary />
+                            : ""
+                        }
                     </div>
                 </div>
             </div>
