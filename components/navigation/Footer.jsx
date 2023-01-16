@@ -2,6 +2,7 @@ import Image from "next/image"
 import { SocialIcon } from "react-social-icons"
 import { MdOutlineEmail } from "react-icons/md"
 import { BsFillTelephoneFill } from "react-icons/bs"
+import { IconButton } from "@material-ui/core"
 
 
 const Footer = () => {
@@ -37,13 +38,15 @@ const Footer = () => {
             </div>
             <div className="md:w-1/3 flex justify-center mt-10">
                 {socialUrls.map(s => (
-                    <SocialIcon
-                        style={{ height: 40, width: 40, marginRight: "1em" }}
-                        key={s.id}
-                        bgColor={s.id === 2 ? "orange" : "white"}
-                        fgColor={s.id === 2 ? "white" : "black"}
-                        url={s.url}
-                    />
+                    <IconButton key={s.id} style={{ borderRadius: "0px", padding: "0px"}}>
+                        <SocialIcon
+                            style={{ height: 40, width: 40, marginRight: "1em" }}
+                            bgColor={s.id === 2 ? "orange" : "white"}
+                            fgColor={s.id === 2 ? "white" : "black"}
+                            url={s.url}
+                        />
+                    </IconButton>
+                                      
                 ))}
             </div>
         </div>

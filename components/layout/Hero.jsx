@@ -18,7 +18,7 @@ const Hero = () => {
                 alt="heroimageB.jpg"
                 width={1000}
                 height={1000}
-                className="hover:cursor-pointer w-full h-[18rem] lg:h-[20rem] object-cover"
+                className="hover:cursor-pointer w-full h-[22rem] lg:h-[26rem] object-cover"
                 onClick={() => navigateTo("/")}
 
             />
@@ -29,14 +29,14 @@ const Hero = () => {
                     width={1000}
                     height={1000}
                     className="
-                        min-w-fit w-5/6 sm:w-[32rem] lg:w-[36rem] pt-3 object-contain rounded-t-md bg-black/40
-                        absolute h-32 top-[15%] left-[50%] translate-x-[-50%]
+                        min-w-fit w-5/6 lg:w-2/3 max-w-4xl pt-3 lg:pt-5 object-contain rounded-t-md bg-black/40
+                        absolute h-32 top-[18.7%] lg:top-[20%] left-[50%] translate-x-[-50%]
                     "
                 />
                 <h3 className="
-                        min-w-fit w-5/6 sm:w-[32rem] lg:w-[36rem] lg:pb-5 p-1 pb-5
+                        min-w-fit w-5/6 lg:w-2/3 max-w-4xl pt-4 lg:pb-10 p-1 pb-5
                         text-center text-lg text-white tracking-wider font-light rounded-b-md bg-black/40
-                        absolute top-[59.3%] lg:top-[55%] left-[50%] translate-x-[-50%]
+                        absolute top-[55%] lg:top-[50.7%] left-[50%] translate-x-[-50%]
                     "
                 >
                     Illustrator & Striptekenaar
