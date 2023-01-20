@@ -88,7 +88,7 @@ const ContactPage = ({ bannerContent }) => {
                             <span className="text-red-500"> - Message field is required </span>
                             )}
                     </div>
-                    <div className="flex justify-end">
+                    <div className="flex justify-center lg:justify-end">
                         <Button text={"Verzenden"} primaryFlex />
                     </div>
                 </form>

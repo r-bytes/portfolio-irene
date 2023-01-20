@@ -13,9 +13,9 @@ const Instagram = () => {
     return (
         <>
             <h1 className="mt-8 text-3xl font-thin tracking-wider"> Volg mij online </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-8">
+            <div className="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 {instagramItems.map(i => (
-                    <div key={i.id} className="w-96 h-96 md:w-72 md:h-72 lg:w-64 lg:h-64 border"> {i.name} </div>
+                    <div key={i.id} className="justify-self-center w-96 h-96 md:w-72 md:h-72 lg:w-64 lg:h-64 border"> {i.name} </div>
                 ))}
             </div>
             <div className="pb-8">

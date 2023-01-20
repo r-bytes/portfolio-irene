@@ -14,7 +14,7 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
 
     const handleClick = (tagName) => {
         setClickedOn(tagName) // set clicked item in context
-        // navigateTo("/portfolio") => (slice produces a bug)
+        // navigateTo("/portfolio") => (slice produces a "bug")
     }
 
     return (
