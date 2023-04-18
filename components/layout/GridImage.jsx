@@ -34,16 +34,17 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
             </div>
             {hovered ? ( // => Card Overlay
                 <div className="absolute w-full h-full text-primary min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out text-left p-6 flex flex-col justify-evenly">
-                    <div 
-                        className="cursor-pointer hover:underline w-fit" 
+                    <div className="cursor-pointer hover:underline"
                         onClick={() => navigateTo(`/portfolio/${id}`)}
                     >
-                        <h1 className="text-xl font-semibold "> {title} </h1>
-                        <h3 className="text-sm mb-2"> {subtitle} </h3>
+                        <div className="w-fit">
+                            <h1 className="text-xl font-semibold "> {title} </h1>
+                            <h3 className="text-sm mb-2"> {subtitle} </h3>
+                        </div>
+                        <p className="mb-3 leading-7 text-md">
+                            {description}
+                        </p>
                     </div>
-                    <p className="mb-3 leading-7 text-md">
-                        {description}
-                    </p>
 
                     <div className="flex flex-wrap gap-3">
                         {tags.length > 1 ? (tags.map((t, index) => ( // => Object has Multiply tags
