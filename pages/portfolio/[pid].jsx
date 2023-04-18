@@ -1,3 +1,4 @@
+import { Button } from "@components/index"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { sanityClient, urlFor } from "sanity"
@@ -21,8 +22,8 @@ const PortfolioItem = ({ portfolioItem }) => {
                 
                 <Image
                     className="mx-auto"
-                    width={1000}
-                    height={1000}
+                    width={750}
+                    height={750}
                     alt={title}
                     src={urlFor(image).url()}
                     
@@ -40,6 +41,11 @@ const PortfolioItem = ({ portfolioItem }) => {
                         </span>
                     )}
                 </div>
+                <Button
+                    primary
+                    href={"/portfolio"}
+                    text={"Terug"}
+                />
             </div>
         </div>
     )
