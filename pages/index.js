@@ -35,6 +35,15 @@ export default function Home({ portfolioItems, featuredPost }) {
                     buttonText={buttonText}
                 />
                 <Instagram />
+                <FeaturedPost
+                    image={urlFor(image).url()}
+                    title={title}
+                    subtitle={subtitle}
+                    description={description}
+                    tag={tagList[0].title} // first tag only
+                    buttonUrl={buttonUrl}
+                    buttonText={buttonText}
+                />
             </main>
         </>
     );
