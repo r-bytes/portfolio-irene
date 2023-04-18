@@ -1,6 +1,7 @@
 import { IconButton } from "@material-ui/core"
 import Image from "next/image"
 import { useRouter } from "next/router"
+import { AiFillBehanceCircle } from "react-icons/ai"
 import { SocialIcon } from "react-social-icons"
 
 const Hero = () => {
@@ -8,7 +9,9 @@ const Hero = () => {
     const socialUrls = [
         // { id: 1, url: "https://www.facebook.com/ireneberbee.comic" },
         { id: 1, url: "https://www.facebook.com/ComicsandIllustration" },
-        { id: 3, url: "https://www.instagram.com/ireneberbee/" }
+        { id: 2, url: "https://www.linkedin.com/in/ireneberbee" },
+        // { id: 3, url: "https://ireneberbee.myportfolio.com" },
+        { id: 4, url: "https://www.instagram.com/ireneberbee/" }
     ]
 
     return (
@@ -51,12 +54,15 @@ const Hero = () => {
                         <SocialIcon
                             style={{ height: 40, width: 40, marginRight: ".5em" }}
                             key={s.id}
-                            bgColor={s.id === 2 ? "orange" : "white"}
-                            fgColor={s.id === 2 ? "white" : "black"}
+                            bgColor={"white"}
+                            // fgColor={"black"}
                             url={s.url}
-                            />
-                        </IconButton>
+                        />
+
+                    </IconButton>
                 ))}
+                
+                <AiFillBehanceCircle onClick={() => navigateTo("https://ireneberbee.myportfolio.com")} color="white" size={47} className="cursor-pointer rounded-full absolute top-[-10%] left-[113%] translate-x-[-50%] lg:top-[-10%]"/>
             </span>
         </div>
     )

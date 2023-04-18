@@ -3,13 +3,16 @@ import { SocialIcon } from "react-social-icons"
 import { MdOutlineEmail } from "react-icons/md"
 import { BsFillTelephoneFill } from "react-icons/bs"
 import { IconButton } from "@material-ui/core"
+import { AiFillBehanceCircle } from "react-icons/ai"
 
 
 const Footer = () => {
     const socialUrls = [
         // { id: 1, url: "https://www.facebook.com/ireneberbee.comic" },
         { id: 1, url: "https://www.facebook.com/ComicsandIllustration" },
-        { id: 3, url: "https://www.instagram.com/ireneberbee/" }
+        { id: 2, url: "https://www.linkedin.com/in/ireneberbee" },
+        // { id: 4, url: "https://ireneberbee.myportfolio.com"},
+        { id: 5, url: "https://www.instagram.com/ireneberbee/" }
     ]
 
     return (
@@ -41,13 +44,15 @@ const Footer = () => {
                     <IconButton key={s.id} style={{ borderRadius: "0px", padding: "0px"}}>
                         <SocialIcon
                             style={{ height: 40, width: 40, marginRight: "1em" }}
-                            bgColor={s.id === 2 ? "orange" : "white"}
-                            fgColor={s.id === 2 ? "white" : "black"}
+                            bgColor={"white"}
+                            // fgColor={"black"}
                             url={s.url}
                         />
                     </IconButton>
                                       
                 ))}
+                <AiFillBehanceCircle onClick={() => navigateTo("https://ireneberbee.myportfolio.com")} color="white" size={48} className="cursor-pointer"/>
+
             </div>
         </div>
     )
