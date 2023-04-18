@@ -62,7 +62,12 @@ const Hero = () => {
                     </IconButton>
                 ))}
                 
-                <AiFillBehanceCircle onClick={() => navigateTo("https://ireneberbee.myportfolio.com")} color="white" size={47} className="cursor-pointer rounded-full absolute top-[-10%] left-[113%] translate-x-[-50%] lg:top-[-10%]"/>
+                <AiFillBehanceCircle
+                    onClick={() => navigateTo("https://ireneberbee.myportfolio.com")}
+                    color="white"
+                    size={47}
+                    className="cursor-pointer rounded-full absolute top-[-10%] left-[113%] translate-x-[-50%] lg:top-[-10%]"
+                />
             </span>
         </div>
     )
