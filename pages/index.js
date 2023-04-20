@@ -1,16 +1,14 @@
-import { Button, Instagram, Portfolio, FeaturedPost, MultiCarousel } from "@components/index";
+import { Button, Instagram, Portfolio, FeaturedPost } from "@components/index";
 import Customers from "@components/layout/Customers";
 import Head from "next/head";
 import { sanityClient, urlFor } from "sanity";
 
 export default function Home({ portfolioItems, featuredPost, customerItems }) {
-    const verifiedFeaturedPostHotspot = featuredPost.find(post => post.hotspot === true)
-    const {title: titleHotspot, subtitle: subtitleHotspot, description: descriptionHotspot, image: imageHotspot, tagList: tagListHotspot, buttonText: buttonTextHotspot, buttonUrl: buttonUrlHotspot } = verifiedFeaturedPostHotspot
-    
-    const verifiedFeaturedPost = featuredPost.find(post => post.hotspot === false)
+    const verifiedFeaturedPost = featuredPost.find(post => post.hotspot === true)
     const {title, subtitle, description, image, tagList, buttonText, buttonUrl } = verifiedFeaturedPost
 
 
+    console.log("featuredPost", featuredPost)
     return (
         <>
             <Head>
@@ -31,13 +29,13 @@ export default function Home({ portfolioItems, featuredPost, customerItems }) {
                     />
                 </div>
                 <FeaturedPost
-                    image={urlFor(imageHotspot).url()}
-                    title={titleHotspot}
-                    subtitle={subtitleHotspot}
-                    description={descriptionHotspot}
-                    tag={tagListHotspot[0].title} // first tag only
-                    buttonUrl={buttonUrlHotspot}
-                    buttonText={""}
+                    image={urlFor(image).url()}
+                    title={title}
+                    subtitle={subtitle}
+                    description={description}
+                    tag={tagList[0].title} // first tag only
+                    buttonUrl={buttonUrl}
+                    buttonText={buttonText}
                 />
                 <Instagram />
                 <FeaturedPost
