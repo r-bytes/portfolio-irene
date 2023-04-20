@@ -1,14 +1,14 @@
-import { Button, Instagram, Portfolio, FeaturedPost } from "@components/index";
+import { Button, Instagram, Portfolio, FeaturedPost, MultiCarousel } from "@components/index";
 import Customers from "@components/layout/Customers";
 import Head from "next/head";
 import { sanityClient, urlFor } from "sanity";
 
-export default function Home({ portfolioItems, featuredPost }) {
+export default function Home({ portfolioItems, featuredPost, customerItems }) {
     const verifiedFeaturedPostHotspot = featuredPost.find(post => post.hotspot === true)
-    const {title, subtitle, description, image, tagList, buttonText, buttonUrl } = verifiedFeaturedPostHotspot
-
-    const verifiedFeaturedNoHotspot = featuredPost.find(post => post.hotspot === false)
-    const {title: titleHotspot, subtitle: subtitleHotspot, description: descriptionHotspot, image: imageHotspot, tagList: tagListHotspot, buttonText: buttonTextHotspot, buttonUrl: buttonUrlHotspot } = verifiedFeaturedNoHotspot
+    const {title: titleHotspot, subtitle: subtitleHotspot, description: descriptionHotspot, image: imageHotspot, tagList: tagListHotspot, buttonText: buttonTextHotspot, buttonUrl: buttonUrlHotspot } = verifiedFeaturedPostHotspot
+    
+    const verifiedFeaturedPost = featuredPost.find(post => post.hotspot === false)
+    const {title, subtitle, description, image, tagList, buttonText, buttonUrl } = verifiedFeaturedPost
 
 
     return (
@@ -49,7 +49,8 @@ export default function Home({ portfolioItems, featuredPost }) {
                     buttonUrl={buttonUrl}
                     buttonText={buttonText}
                 />
-                <Customers />
+                {/* <Customers customerItems={customerItems} /> */}
+                <Customers customerItems={customerItems} />
             </main>
         </>
     );
@@ -84,14 +85,24 @@ export const getServerSideProps = async () => {
             buttonText
         }
     `;
+
+    const queryCustomers = `
+    *[_type == "customers"]| order(_createdAt desc){
+        _id,
+        title,
+        image
+    }
+`;
     
     const portfolioItems = await sanityClient.fetch(queryPortfolio)
     const featuredPost = await sanityClient.fetch(queryFeatured)
+    const customerItems = await sanityClient.fetch(queryCustomers)
     
     return {
         props: {
             portfolioItems,
-            featuredPost
+            featuredPost,
+            customerItems
         }
     };
 };

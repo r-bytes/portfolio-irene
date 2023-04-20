@@ -20,7 +20,7 @@ const FeaturedPost = ({ image, title, subtitle, description, tag, buttonText, bu
                     <p className="pb-8"> {description} </p>
                     <div className="flex gap-1 justify-center items-center">
                         {   // show button only when button text exists
-                            buttonText.length
+                            buttonText?.length
                             ? <Button text={buttonText} href={buttonUrl} primary />
                             : ""
                         }

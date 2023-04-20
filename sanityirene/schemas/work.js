@@ -1,6 +1,6 @@
 export default {
     name: 'work',
-    title: 'Mijn Werk',
+    title: 'Eigen Werk',
     type: 'document',
     fields: [
       {
@@ -9,8 +9,8 @@ export default {
         type: 'string',
       },
       {
-        name: 'subtitle',
-        title: 'Subtitle',
+        name: 'description',
+        title: 'Description',
         type: 'string',
       },
       {

@@ -9,8 +9,8 @@ export default {
       type: 'string',
     },  
     {
-      name: 'subtitle',
-      title: 'Subtitle',
+      name: 'description',
+      title: 'Description',
       type: 'text',
     },
   ],

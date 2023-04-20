@@ -34,7 +34,7 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
             </div>
             {hovered ? ( // => Card Overlay
                 <div className="absolute w-full h-full text-primary min-h-fit group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out text-left p-6 flex flex-col justify-evenly">
-                    <div className="cursor-pointer hover:underline"
+                    <div className="cursor-pointer hover:text-[#3c3c3c]"
                         onClick={() => navigateTo(`/portfolio/${id}`)}
                     >
                         <div className="w-fit">

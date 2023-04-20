@@ -1,6 +1,7 @@
 import { IconButton } from "@material-ui/core"
 import Image from "next/image"
 import { useRouter } from "next/router"
+import { IconContext } from "react-icons"
 import { AiFillBehanceCircle } from "react-icons/ai"
 import { SocialIcon } from "react-social-icons"
 
@@ -21,8 +22,8 @@ const Hero = () => {
                 alt="heroimageB.jpg"
                 width={1000}
                 height={1000}
-                className="hover:cursor-pointer w-full h-[22rem] lg:h-[26rem] object-cover"
-                onClick={() => navigateTo("/")}
+                className="w-full h-[22rem] lg:h-[26rem] object-cover"
+                // onClick={() => navigateTo("/")}
 
             />
             <div>
@@ -45,7 +46,7 @@ const Hero = () => {
                     Illustrator & Striptekenaar
                 </h3>
             </div>
-            <span className="absolute top-[81%] lg:top-[79%] left-[50%] translate-x-[-50%]">
+            <span className="absolute top-[81%] lg:top-[79%] left-[50%] translate-x-[-50%] p-0">
                 {socialUrls.map(s => (
                     <IconButton
                         key={s.id}
@@ -63,6 +64,7 @@ const Hero = () => {
                 ))}
                 
                 <AiFillBehanceCircle
+                stroke="black"
                     onClick={() => navigateTo("https://ireneberbee.myportfolio.com")}
                     color="white"
                     size={47}

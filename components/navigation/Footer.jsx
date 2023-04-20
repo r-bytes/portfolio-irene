@@ -4,6 +4,7 @@ import { MdOutlineEmail } from "react-icons/md"
 import { BsFillTelephoneFill } from "react-icons/bs"
 import { IconButton } from "@material-ui/core"
 import { AiFillBehanceCircle } from "react-icons/ai"
+import { IoIosBusiness } from "react-icons/io"
 
 
 const Footer = () => {
@@ -27,7 +28,7 @@ const Footer = () => {
                 />
             </div>
             <div className="md:w-2/3 mt-10 tracking-wider text-center md:text-left">
-                <h3 className="text-lg text-accent mb-4"> Beschikbaar voor editorial werk blabla lorum ipsum tra. Wat doe ik eigenlijk?  </h3>
+                <h3 className="text-lg text-accent mb-4"> Beschikbaar voor: bedrijfs illustraties, editorial illustraties, strips, Character design en Artwork in opdracht.  </h3>
                 <div className="flex flex-col text-accent"> {/* Icon Container*/}
                     <span className="block">
                         <MdOutlineEmail className="inline-block mr-2" />
@@ -35,7 +36,14 @@ const Footer = () => {
                     </span>
                     <span className="block">
                         <BsFillTelephoneFill className="inline-block mr-2" />
-                        <h4 className="text-white text-xs inline-block"> +31 6 123 456 78 </h4>
+                        <h4 className="text-white text-xs inline-block"> +31 6 170 094 94 </h4>
+                    </span>
+                    <span className="flex mt-2 text-xs">
+                        <IoIosBusiness className="text-lg inline-block mr-2"/>
+                        <h4 className="text-white">KVK: 27362577</h4>
+                    </span>
+                    <span className="text-white text-xs text-center mt-8">
+                        Art by Irene Berbee
                     </span>
                 </div>
             </div>
