@@ -8,7 +8,7 @@ const PortfolioPage = ({ portfolioItems, bannerContent }) => {
         <div className="flex flex-col justify-center items-center mb-16">
             <PageBanner
                 title={title}
-                subtitle={subtitle}
+                description={description}
             />
             <Portfolio // => Portfolio
                 portfolioItems={portfolioItems}

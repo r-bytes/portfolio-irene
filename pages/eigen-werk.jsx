@@ -9,7 +9,7 @@ const EigenWerkPage = ({ workItems, bannerContent }) => {
         <>
             <PageBanner
                 title={title}
-                subtitle={subtitle}
+                description={description}
             />
             <WorkPost
                 items={workItems}

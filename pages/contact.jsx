@@ -31,7 +31,7 @@ const ContactPage = ({ bannerContent }) => {
         <>
             <PageBanner
                 title={title}
-                subtitle={subtitle}
+                description={description}
             />
             <div className="flex flex-col md:flex-row justify-between items-start p-10 space-x-20 max-w-7xl mx-auto">
                 <form

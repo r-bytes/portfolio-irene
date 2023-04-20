@@ -10,7 +10,7 @@ const OverMijPage = ({ aboutContent, bannerContent }) => {
         <>
             <PageBanner
                 title={title}
-                subtitle={subtitle}
+                description={description}
             />
             <About
                 image={urlFor(image).url()}
