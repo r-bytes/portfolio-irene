@@ -1,6 +1,6 @@
 export default {
   name: 'pageBanner',
-  title: 'Page Banner',
+  title: 'Pagina Intro',
   type: 'document',
   fields: [
     {
