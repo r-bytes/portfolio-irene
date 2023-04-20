@@ -3,7 +3,7 @@ import { sanityClient } from "sanity";
 
 /* eslint-disable react/no-unescaped-entities */
 const EigenWerkPage = ({ workItems, bannerContent }) => {
-    const { title, subtitle } = bannerContent
+    const { title, description } = bannerContent
 
     return (
         <>

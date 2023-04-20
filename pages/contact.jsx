@@ -25,7 +25,7 @@ const ContactPage = ({ bannerContent }) => {
             console.log(error.text);
         });
     }
-    const { title, subtitle } = bannerContent
+    const { title, description } = bannerContent
 
     return (
         <>

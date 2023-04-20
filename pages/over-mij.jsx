@@ -4,7 +4,7 @@ import { sanityClient, urlFor } from "sanity"
 /* eslint-disable react/no-unescaped-entities */
 const OverMijPage = ({ aboutContent, bannerContent }) => {
     const { _id, bio, image } = aboutContent
-    const { title, subtitle } = bannerContent
+    const { title, description } = bannerContent
 
     return (
         <>

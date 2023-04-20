@@ -3,7 +3,7 @@ import { PageBanner, Portfolio } from "@components/index"
 import { sanityClient } from "sanity";
 
 const PortfolioPage = ({ portfolioItems, bannerContent }) => {
-    const { title, subtitle } = bannerContent
+    const { title, description } = bannerContent
     return (
         <div className="flex flex-col justify-center items-center mb-16">
             <PageBanner
