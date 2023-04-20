@@ -4,8 +4,12 @@ import Head from "next/head";
 import { sanityClient, urlFor } from "sanity";
 
 export default function Home({ portfolioItems, featuredPost }) {
-    const verifiedFeaturedPost = featuredPost.find(post => post.hotspot === true)
-    const {title, subtitle, description, image, tagList, buttonText, buttonUrl } = verifiedFeaturedPost
+    const verifiedFeaturedPostHotspot = featuredPost.find(post => post.hotspot === true)
+    const {title, subtitle, description, image, tagList, buttonText, buttonUrl } = verifiedFeaturedPostHotspot
+
+    const verifiedFeaturedNoHotspot = featuredPost.find(post => post.hotspot === false)
+    const {title: titleHotspot, subtitle: subtitleHotspot, description: descriptionHotspot, image: imageHotspot, tagList: tagListHotspot, buttonText: buttonTextHotspot, buttonUrl: buttonUrlHotspot } = verifiedFeaturedNoHotspot
+
 
     return (
         <>
@@ -27,13 +31,13 @@ export default function Home({ portfolioItems, featuredPost }) {
                     />
                 </div>
                 <FeaturedPost
-                    image={urlFor(image).url()}
-                    title={title}
-                    subtitle={subtitle}
-                    description={description}
-                    tag={tagList[0].title} // first tag only
-                    buttonUrl={buttonUrl}
-                    buttonText={buttonText}
+                    image={urlFor(imageHotspot).url()}
+                    title={titleHotspot}
+                    subtitle={subtitleHotspot}
+                    description={descriptionHotspot}
+                    tag={tagListHotspot[0].title} // first tag only
+                    buttonUrl={buttonUrlHotspot}
+                    buttonText={""}
                 />
                 <Instagram />
                 <FeaturedPost

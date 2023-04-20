@@ -1,6 +1,6 @@
 export default {
     name: 'featuredPost',
-    title: 'Featured Post',
+    title: 'Uitgelichte Post',
     type: 'document',
     fields: [
         {
