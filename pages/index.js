@@ -1,4 +1,5 @@
 import { Button, Instagram, Portfolio, FeaturedPost } from "@components/index";
+import Customers from "@components/layout/Customers";
 import Head from "next/head";
 import { sanityClient, urlFor } from "sanity";
 
@@ -44,6 +45,7 @@ export default function Home({ portfolioItems, featuredPost }) {
                     buttonUrl={buttonUrl}
                     buttonText={buttonText}
                 />
+                <Customers />
             </main>
         </>
     );
