@@ -5,19 +5,28 @@ import { BsFillTelephoneFill } from "react-icons/bs"
 import { IconButton } from "@material-ui/core"
 import { AiFillBehanceCircle } from "react-icons/ai"
 import { IoIosBusiness } from "react-icons/io"
+import { useStateContext } from "../../context/StateContext";
+
 
 
 const Footer = () => {
+    const { activePage } = useStateContext()
+    let footerStyle = ""
+
+    if (activePage === "success") {
+        footerStyle = "p-10 z-50 w-full bg-secondary flex flex-col md:flex-row justify-center items-center md:items-start md:gap-10 fixed bottom-0 left-0"
+    } else {
+        footerStyle = "p-10 z-50 w-full bg-secondary flex flex-col md:flex-row justify-center items-center md:items-start md:gap-10"
+    }
+
     const socialUrls = [
-        // { id: 1, url: "https://www.facebook.com/ireneberbee.comic" },
-        { id: 1, url: "https://www.facebook.com/ComicsandIllustration" },
-        { id: 2, url: "https://www.linkedin.com/in/ireneberbee" },
-        // { id: 4, url: "https://ireneberbee.myportfolio.com"},
-        { id: 5, url: "https://www.instagram.com/ireneberbee/" }
+        { id: 1, url: process.env.NEXT_PUBLIC_FACEBOOK },
+        { id: 2, url: process.env.NEXT_PUBLIC_LINKEDIN },
+        { id: 3, url: process.env.NEXT_PUBLIC_INSTAGRAM }
     ]
 
     return (
-        <div className="p-10 z-50 w-full bg-secondary flex flex-col md:flex-row justify-center items-center md:items-start md:gap-10 fixed bottom-0 left-0">
+        <div className={footerStyle}>
             <div className="md:w-1/3 my-10">
                 <Image
                     className="w-44 mx-auto"
@@ -32,15 +41,15 @@ const Footer = () => {
                 <div className="flex flex-col text-accent"> {/* Icon Container*/}
                     <span className="block">
                         <MdOutlineEmail className="inline-block mr-2" />
-                        <h4 className="text-white text-xs inline-block"> info@ireneberbee.nl </h4>
+                        <h4 className="text-white text-xs inline-block"> {process.env.NEXT_PUBLIC_EMAIL} </h4>
                     </span>
                     <span className="block">
                         <BsFillTelephoneFill className="inline-block mr-2" />
-                        <h4 className="text-white text-xs inline-block"> +31 6 170 094 94 </h4>
+                        <h4 className="text-white text-xs inline-block"> {process.env.NEXT_PUBLIC_TELEPHONE} </h4>
                     </span>
                     <span className="flex mt-2 text-xs">
                         <IoIosBusiness className="text-lg inline-block mr-2"/>
-                        <h4 className="text-white">KVK: 27362577</h4>
+                        <h4 className="text-white">KVK: {process.env.NEXT_PUBLIC_KVK}</h4>
                     </span>
                     <span className="text-white text-xs text-center mt-8">
                         Art by Irene Berbee

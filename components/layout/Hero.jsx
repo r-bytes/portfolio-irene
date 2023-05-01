@@ -8,11 +8,9 @@ import { SocialIcon } from "react-social-icons"
 const Hero = () => {
     const navigateTo = useRouter().push
     const socialUrls = [
-        // { id: 1, url: "https://www.facebook.com/ireneberbee.comic" },
-        { id: 1, url: "https://www.facebook.com/ComicsandIllustration" },
-        { id: 2, url: "https://www.linkedin.com/in/ireneberbee" },
-        // { id: 3, url: "https://ireneberbee.myportfolio.com" },
-        { id: 4, url: "https://www.instagram.com/ireneberbee/" }
+        { id: 1, url: process.env.NEXT_PUBLIC_FACEBOOK },
+        { id: 2, url: process.env.NEXT_PUBLIC_LINKEDIN },
+        { id: 3, url: process.env.NEXT_PUBLIC_INSTAGRAM }
     ]
 
     return (

@@ -51,11 +51,11 @@ const ContactPage = ({ bannerContent }) => {
                     <h2 className="text-xl mb-2"> Details </h2>
                     <span className="block">
                         <MdOutlineEmail className="inline-block mr-2 text-accent" />
-                            <h4 className="text-xs inline-block"> info@ireneberbee.nl </h4>
+                            <h4 className="text-xs inline-block"> {process.env.NEXT_PUBLIC_EMAIL} </h4>
                     </span>
                     <span className="block">
                         <BsFillTelephoneFill className="inline-block mr-2 text-accent" />
-                            <h4 className="text-xs inline-block"> +31 6 123 456 78 </h4>
+                            <h4 className="text-xs inline-block"> {process.env.NEXT_PUBLIC_TELEPHONE} </h4>
                     </span>
                 </div>
             </div>
