@@ -17,7 +17,7 @@ const Footer = () => {
     ]
 
     return (
-        <div className="p-10 z-50 w-full bg-secondary flex flex-col md:flex-row justify-center items-center md:items-start md:gap-10">
+        <div className="p-10 z-50 w-full bg-secondary flex flex-col md:flex-row justify-center items-center md:items-start md:gap-10 fixed bottom-0 left-0">
             <div className="md:w-1/3 my-10">
                 <Image
                     className="w-44 mx-auto"
