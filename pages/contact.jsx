@@ -1,5 +1,7 @@
 import { Button, PageBanner } from "@components/index";
+import ContactForm from "@components/layout/ContactForm";
 import emailjs from '@emailjs/browser';
+import { router } from "next/router";
 import React, { useRef } from "react"
 import { useForm } from "react-hook-form"
 import { BsFillTelephoneFill } from "react-icons/bs";
@@ -9,23 +11,31 @@ import { sanityClient } from "sanity";
 
 /* eslint-disable react/no-unescaped-entities */
 const ContactPage = ({ bannerContent }) => {
-    const formRef = useRef()
-    const { register, handleSubmit, formState: {errors} } = useForm()
-    // const nameRef = useRef()
-    // const emailRef = useRef()
-    // const messageRef = useRef()
-
-    const onSubmit = () => {
-        setSubmitted(true)
-        
-        emailjs.sendForm(`${process.env.NEXT_PUBLIC_SID}`, `${process.env.NEXT_PUBLIC_TID}`, formRef.current, `${process.env.NEXT_PUBLIC_PKEY}`)
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-            console.log(error.text);
-        });
-    }
     const { title, description } = bannerContent
+    const { reset } = useForm()
+
+    const handleSave = (formData) => {
+        console.log({ formData })
+
+        emailjs
+        .send(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, 
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+            formData,
+            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+        reset();
+        router.push('/success')
+    }
+
 
     return (
         <>
@@ -34,64 +44,9 @@ const ContactPage = ({ bannerContent }) => {
                 description={description}
             />
             <div className="flex flex-col md:flex-row justify-between items-start p-10 space-x-20 max-w-7xl mx-auto">
-                <form
-                    ref={formRef}
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="w-5/6 md:w-2/3 flex flex-col mx-auto justify-center order-2 md:order-1"
-                >
 
-                    <label className="block mb-5" htmlFor="name">
-                        <span className="text-primary text-xs font-bold tracking-wider ml-1"> Name </span><span className="text-xs"> (verplicht) </span>
-                        <input
-                            {...register("name", {required: true})}
-                            className="text-primary border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
-                            id="name"
-                            type="text"
-                        />
-                    </label>
+                <ContactForm onSave={handleSave} />
 
-                    <label className="block mb-5" htmlFor="email">
-                        <span className="text-primary text-xs font-bold tracking-wider ml-1"> E-mailadres </span><span className="text-xs"> (verplicht) </span>
-                        <input
-                            {...register("email", {
-                                required: "Required",
-                                pattern: {
-                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                    message: "invalid email address"
-                                }}
-                            )}
-                            className="text-primary border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
-                            id="email"
-                            type="text"
-                        />
-                    </label>
-
-                    <label className="block mb-5" htmlFor="message">
-                        <span className="text-primary text-xs font-bold tracking-wider ml-1"> Bericht </span><span className="text-xs"> (verplicht) </span>
-                        <textarea
-                            {...register("comment", {required: true})}
-                            className="text-primary border rounded py-2 px-3 form-textarea mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
-                            id="message"
-                            rows={10}
-                        />
-                    </label>
-
-                    {/* errors when field validation fails */}
-                    <div className="flex flex-col p-5">
-                        {errors.name && (
-                            <span className="text-red-500"> - Name field is required </span>
-                            )}
-                        {errors.email && (
-                            <span className="text-red-500"> - Email field is required </span>
-                            )}
-                        {errors.comment && (
-                            <span className="text-red-500"> - Message field is required </span>
-                            )}
-                    </div>
-                    <div className="flex justify-center lg:justify-end">
-                        <Button text={"Verzenden"} primaryFlex />
-                    </div>
-                </form>
                 <div className="hidden md:flex md:flex-col text-primary order-1 md:order-2">
                     <h2 className="text-xl mb-2"> Details </h2>
                     <span className="block">
