@@ -1,11 +1,17 @@
 import Image from "next/image"
+import React from "react"
 
 const About = ({ bio, image }) => {
     return (
         <div className="flex flex-col lg:flex-row justify-between items-center mx-auto p-10 lg:p-20 max-w-5xl">
             <div className="order-2 lg:w-5/6 text-primary">
                 <p className="text-center mx-auto lg:text-left leading-6 tracking-wider">
-                    {bio}
+                    {bio?.split("\n").map((line, index) => (
+                        <React.Fragment key={index}>
+                            {line}
+                            <br />
+                        </React.Fragment>
+                    ))}
                 </p>
             </div>
             <div className="order-1 lg:order-2 lg:w-2/3 mb-10">
