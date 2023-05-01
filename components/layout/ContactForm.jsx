@@ -26,7 +26,6 @@ const ContactForm = ({ onSave }) => {
                     )}
                     className="text-primary border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                     id="name"
-                    errors={!!errors.name}
                     type="text"
                     // ref={}
                 />

@@ -28,6 +28,7 @@ const Hero = () => {
             />
             <div>
                 <Image
+                    priority
                     src={"/images/mijnlogo-white.png"}
                     alt="heroimageB.jpg"
                     width={1000}
