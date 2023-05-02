@@ -56,19 +56,22 @@ const Hero = () => {
                             key={s.id}
                             bgColor={"white"}
                             // fgColor={"black"}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             url={s.url}
                         />
 
                     </IconButton>
                 ))}
-                
-                <AiFillBehanceCircle
-                stroke="black"
-                    onClick={() => navigateTo("https://ireneberbee.myportfolio.com")}
-                    color="white"
-                    size={47}
-                    className="cursor-pointer rounded-full absolute top-[-10%] left-[113%] translate-x-[-50%] lg:top-[-10%]"
-                />
+                <a target="_blank" href="https://ireneberbee.myportfolio.com" rel="noopener noreferrer">
+                    <AiFillBehanceCircle
+                        stroke="black"
+                        onClick={() => navigateTo("https://ireneberbee.myportfolio.com")}
+                        color="white"
+                        size={47}
+                        className="cursor-pointer rounded-full absolute top-[-10%] left-[113%] translate-x-[-50%] lg:top-[-10%]"
+                    />
+                </a>
             </span>
         </div>
     )

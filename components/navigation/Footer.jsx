@@ -6,11 +6,12 @@ import { IconButton } from "@material-ui/core"
 import { AiFillBehanceCircle } from "react-icons/ai"
 import { IoIosBusiness } from "react-icons/io"
 import { useStateContext } from "../../context/StateContext";
-
-
+import { useRouter } from "next/router"
+import { Link } from "next"
 
 const Footer = () => {
     const { activePage } = useStateContext()
+    const navigateTo = useRouter().push
     let footerStyle = ""
 
     if (activePage === "success") {
@@ -64,12 +65,15 @@ const Footer = () => {
                             bgColor={"white"}
                             // fgColor={"black"}
                             url={s.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
                         />
                     </IconButton>
                                       
                 ))}
-                <AiFillBehanceCircle onClick={() => navigateTo("https://ireneberbee.myportfolio.com")} color="white" size={48} className="cursor-pointer"/>
-
+                <a target="_blank" href="https://ireneberbee.myportfolio.com" rel="noopener noreferrer">
+                    <AiFillBehanceCircle target="_blank" color="white" size={48} className="cursor-pointer" />
+                </a>
             </div>
         </div>
     )
