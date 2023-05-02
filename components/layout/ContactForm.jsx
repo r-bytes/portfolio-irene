@@ -26,6 +26,7 @@ const ContactForm = ({ onSave }) => {
                     )}
                     className="text-primary border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                     id="name"
+                    name="name"
                     type="text"
                     // ref={}
                 />
@@ -45,6 +46,7 @@ const ContactForm = ({ onSave }) => {
                     )}
                     className="text-primary border rounded py-2 px-3 form-input mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                     // id="email"
+                    name="email"
                     type="text"
                 />
             </label>
@@ -53,12 +55,13 @@ const ContactForm = ({ onSave }) => {
                 <span className="text-primary text-xs font-bold tracking-wider ml-1"> Bericht </span><span className="text-xs"> (verplicht) </span>
                 <textarea
                     {...register(
-                        "comment", {
+                        "message", {
                             required: true
                         }
                     )}
                     className="text-primary border rounded py-2 px-3 form-textarea mt-1 block w-full outline-none ring-[#f6bf5a] focus:ring"
                     id="message"
+                    name="message"
                     rows={10}
                 />
             </label>
