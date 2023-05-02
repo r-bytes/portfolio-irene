@@ -21,6 +21,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'scontent-ams4-1.cdninstagram.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'scontent-*.cdninstagram.com',
+            },
         ],
     },
 };
