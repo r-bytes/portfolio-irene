@@ -83,7 +83,7 @@ const ContactForm = ({ onSave }) => {
             <hr />
             <ReCAPTCHA
                 // sitekey={key}
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                sitekey={"6LcRf-AlAAAAALfThwabQD3QaKjmRIAisw3wZVL4"}
                 onChange={onChange}
             />
 
