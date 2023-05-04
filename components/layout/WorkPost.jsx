@@ -40,7 +40,7 @@ const WorkPost = ({ items }) => {
     ))
 
     return (
-        <div className="border max-w-5xl mx-auto my-10 flex flex-col md:flex-row flex-wrap justify-center items-center">
+        <div className="max-w-5xl mx-auto my-10 flex flex-col md:flex-row flex-wrap justify-center items-center">
             {workItems}
         </div>
     )
