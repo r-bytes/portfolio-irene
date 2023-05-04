@@ -24,7 +24,7 @@ const MultiCarousel = ({ items }) => {
       };
 
     return (
-        <Carousel responsive={responsive} className="h-full w-full p-10 mb-10" centerMode infinite showDots swipeable renderButtonGroupOutside>
+        <Carousel responsive={responsive} className="h-full w-full p-10 mb-16" centerMode infinite showDots swipeable renderButtonGroupOutside>
             {items}
       </Carousel>
     )

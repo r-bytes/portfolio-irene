@@ -11,8 +11,6 @@ export default function Home({ portfolioItems, featuredPost, notFeaturedPost, cu
     const verifiedNotFeaturedPost = notFeaturedPost.find(post => post.hotspot === true)
     const {title: title2, subtitle: subtitle2, description: description2, image: image2, tagList: tagList2, buttonText: buttonText2, buttonUrl: buttonUrl2 } = verifiedNotFeaturedPost
 
-    // console.log(featuredPost, "featuredPost")
-    console.log(notFeaturedPost, "notfeaturedPost")
     return (
         <>
             <Head>

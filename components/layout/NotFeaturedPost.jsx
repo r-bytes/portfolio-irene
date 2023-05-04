@@ -3,8 +3,8 @@ import Image from "next/image"
 
 const NotFeaturedPost = ({ image, title, subtitle, description, buttonText, buttonUrl }) => {
     return (
-        <div className="w-full md:h-[28rem] flex flex-col md:flex-row">
-            <div className="w-full md:w-2/4">
+        <div className="w-full md:h-[28rem] flex flex-col md:flex-row my-12">
+            <div className="w-full md:w-1/2">
                 <Image
                     src={image}
                     alt={image}
@@ -13,7 +13,7 @@ const NotFeaturedPost = ({ image, title, subtitle, description, buttonText, butt
                     height={500}
                 />
             </div>
-            <div className="bg-secondary w-full md:w-3/4 flex items-center">
+            <div className="bg-secondary w-full md:w-1/2 flex items-center">
                 <div className="flex flex-col items-start space-y-3 text-secondary text-left p-8">
                     <h1 className="text-5xl font-extralight"> {title} </h1>
                     <h3 className="font-thin pb-8"> {subtitle} </h3>

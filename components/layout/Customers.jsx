@@ -5,6 +5,7 @@ import { MultiCarousel } from "..";
 const Customers = ({ customerItems }) => {
     const items = customerItems?.map(item => (
         <div
+            className="mb-12"
             key={item._id}
         >
 
