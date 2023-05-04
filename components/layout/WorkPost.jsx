@@ -3,12 +3,13 @@ import { Button } from "../index"
 import React from "react"
 
 const WorkPost = ({ items }) => {
-    const workItems = items.map(({ _id, title, subtitle, content }) => (
+    const workItems = items.map(({ _id, title, subtitle, description, content }) => (
         <React.Fragment key={_id}>
 
-            <div className="mx-auto text-center p-2 sm:p-12">
-                <h1 className="text-2xl font-extralight mb-2 tracking-wider"> {title} </h1>
-                <h3 className="tracking-wide leading-7"> {subtitle} </h3>
+            <div className="mx-auto text-center p-2 sm:p-12 mt-0">
+                <h1 className="text-2xl font-extralight tracking-wider mb-12"> {title} </h1>
+                <h3 className="tracking-wide leading-7 mt-4"> {subtitle} </h3>
+                <h3 className="tracking-wide leading-7 mt-8"> {description} </h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-2">
                 {content.map(({_id, imageUrl, title, buttonText, buttonUrl}, index) => (
