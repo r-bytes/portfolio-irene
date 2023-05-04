@@ -25,6 +25,7 @@ export const getServerSideProps = async () => {
             _id,
             title,
             subtitle,
+            description,
             "content": contentArray[0..10]{
                 _key,
                 title,
