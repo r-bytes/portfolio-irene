@@ -10,10 +10,10 @@ const WorkPost = ({ items }) => {
             }>
                 <h1 className="text-2xl font-extralight tracking-wider mb-12"> {title} </h1>
                 <h3 className="tracking-wide leading-7 mt-4"> {subtitle} </h3>
-                <h3 className="tracking-wide leading-7 my-8"> {description} </h3>
+                <h3 className="tracking-wide leading-7 my-8 px-4"> {description} </h3>
             </div>
             <div className={content.length > 3 ?
-                "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-2" : "grid grid-cols-1 sm:grid-cols-2 px-2 md:flex space-x-8"
+                "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-2" : "grid grid-cols-1 sm:grid-cols-2 px-4 md:flex space-x-8"
             }>
                 {content.map(({_id, imageUrl, title, buttonText, buttonUrl}, index) => (
                     <div
