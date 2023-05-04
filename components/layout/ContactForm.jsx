@@ -1,12 +1,27 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
 import { useForm } from "react-hook-form"
 
 const ContactForm = ({ onSave }) => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const formRef = useRef()
+    const [captchaDone, setCaptchaDone] = useState()
+    // const captchaRef = useRef()
+    // console.log("initial ref", captchaRef)
 
+    const captchaStyle = captchaDone ?
+        "px-4 py-2.5 bg-button text-primary uppercase font-semibold text-xs tracking-wider place-self-end transform transition-transform hover:scale-105 duration-500" :
+        "cursor-not-allowed bg-button px-4 py-2.5 text-primary uppercase font-semibold text-xs tracking-wider place-self-end"
+
+    const key = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
     const handleSave = (formData) => {
         onSave(formData)
+    }
+
+    const onChange = () => {
+        console.log("ref", captchaRef)
+        setCaptchaDone(true)
+        console.log(captchaDone)
     }
 
     return (
@@ -65,6 +80,12 @@ const ContactForm = ({ onSave }) => {
                     rows={10}
                 />
             </label>
+            <hr />
+            <ReCAPTCHA
+                // sitekey={key}
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                onChange={onChange}
+            />
 
             {/* errors when field validation fails */}
             <div className="flex flex-col p-5">
@@ -79,8 +100,8 @@ const ContactForm = ({ onSave }) => {
                 )}
             </div>
             <div className="flex justify-center lg:justify-end">
-                <button className="px-4 py-2.5 bg-button text-primary uppercase font-semibold text-xs tracking-wider place-self-end transform transition-transform hover:scale-105 duration-500" type="submit"> Verzenden </button>
-            </div>
+                <button disabled={!captchaDone} className={captchaStyle} type="submit"> Verzenden </button>
+            </div> 
         </form>
     )
 }
