@@ -6,13 +6,15 @@ export const StateContext = ({ children }) => {
     const [clickedOn, setClickedOn] = useState("")
     const [isOpen, setIsOpen] = useState(false)
     const [activePage, setActivePage] = useState("home")
+    const [captchaDone, setCaptchaDone] = useState()
 
     return (
        <Context.Provider
             value={{
                 clickedOn, setClickedOn,
                 isOpen, setIsOpen,
-                activePage, setActivePage
+                activePage, setActivePage,
+                captchaDone, setCaptchaDone
             }}>
             {children}
         </Context.Provider>

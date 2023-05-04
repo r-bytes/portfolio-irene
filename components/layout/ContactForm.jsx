@@ -1,27 +1,16 @@
-import { useRef, useState } from "react"
-import ReCAPTCHA from "react-google-recaptcha"
+import { useCallback, useRef } from "react"
 import { useForm } from "react-hook-form"
 
 const ContactForm = ({ onSave }) => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const formRef = useRef()
-    const [captchaDone, setCaptchaDone] = useState()
-    // const captchaRef = useRef()
-    // console.log("initial ref", captchaRef)
 
     const captchaStyle = captchaDone ?
         "px-4 py-2.5 bg-button text-primary uppercase font-semibold text-xs tracking-wider place-self-end transform transition-transform hover:scale-105 duration-500" :
         "cursor-not-allowed bg-button px-4 py-2.5 text-primary uppercase font-semibold text-xs tracking-wider place-self-end"
 
-    const key = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
     const handleSave = (formData) => {
         onSave(formData)
-    }
-
-    const onChange = () => {
-        console.log("ref", captchaRef)
-        setCaptchaDone(true)
-        console.log(captchaDone)
     }
 
     return (
@@ -80,14 +69,6 @@ const ContactForm = ({ onSave }) => {
                     rows={10}
                 />
             </label>
-            <hr />
-            <ReCAPTCHA
-                // sitekey={key}
-                sitekey={"6LcDaOAlAAAAAK2zIUX7CD8pK5Vyh_aPrsXPCLfM"}
-                onChange={onChange}
-            />
-
-            {/* errors when field validation fails */}
             <div className="flex flex-col p-5">
                 {errors.name && (
                     <span className="text-red-500"> - Name field is required </span>
@@ -100,7 +81,7 @@ const ContactForm = ({ onSave }) => {
                 )}
             </div>
             <div className="flex justify-center lg:justify-end">
-                <button disabled={!captchaDone} className={captchaStyle} type="submit"> Verzenden </button>
+                <button className={captchaStyle} type="submit"> Verzenden </button>
             </div> 
         </form>
     )
