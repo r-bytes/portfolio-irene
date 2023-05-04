@@ -8,5 +8,6 @@ import pageBanner from "./pageBanner";
 import about from "./about";
 import socials from "./socials";
 import customers from "./customers";
+import notFeaturedPost from "./notFeaturedPost";
 
-export const schemaTypes = [author, about, projects, tags, portfolio, featuredPost, pageBanner, customers]
+export const schemaTypes = [author, about, projects, tags, portfolio, featuredPost, notFeaturedPost, pageBanner, customers]
