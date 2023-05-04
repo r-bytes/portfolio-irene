@@ -16,6 +16,7 @@ const Hero = () => {
     return (
         <div className="w-full min-h-fit relative">
             <Image
+                priority={true}
                 src={"/images/heroimageB.jpg"}
                 alt="heroimageB.jpg"
                 width={1000}
@@ -26,7 +27,7 @@ const Hero = () => {
             />
             <div>
                 <Image
-                    priority
+                    priority={true}
                     src={"/images/mijnlogo-white.png"}
                     alt="heroimageB.jpg"
                     width={1000}

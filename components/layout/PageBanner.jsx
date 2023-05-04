@@ -1,6 +1,9 @@
 import React from "react"
+import { useStateContext } from "context/StateContext"
 
 const PageBanner = ({ title, description }) => {
+    const { activePage } = useStateContext()
+    // Neem dan contact met mij op via het <a href="https://demo-irene.r-bytes.com/contact">contactformulier</a> op deze site.
     return (
         <div className="min-h-48 w-full bg-secondaryAccent px-2 py-10 sm:p-12 flex-col justify-center items-center text-center">
             <h1 className="text-4xl mb-4"> {title} </h1>
@@ -12,6 +15,10 @@ const PageBanner = ({ title, description }) => {
                     </React.Fragment>
                 ))}
             </p>
+            {activePage === "portfolio" ?
+                <>
+                    Neem dan contact met mij op via dit <a href="https://demo-irene.r-bytes.com/contact" className="cursor-pointer hover:underline">contactformulier</a>.
+                </> : null}
         </div>
     )
 }
