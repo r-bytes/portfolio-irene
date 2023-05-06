@@ -1,13 +1,24 @@
-import { useCallback, useRef } from "react"
+import { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
+import ReCAPTCHA from "react-google-recaptcha"
 
 const ContactForm = ({ onSave }) => {
-    const { register, handleSubmit, formState: { errors } } = useForm()
     const formRef = useRef()
+    const [captchaToken, setCaptchaToken] = useState(null);
+    const {
+        register,
+        handleSubmit,
+        formState: {
+            errors 
+        }
+    } = useForm()
 
-    const captchaStyle = captchaDone ?
-        "px-4 py-2.5 bg-button text-primary uppercase font-semibold text-xs tracking-wider place-self-end transform transition-transform hover:scale-105 duration-500" :
-        "cursor-not-allowed bg-button px-4 py-2.5 text-primary uppercase font-semibold text-xs tracking-wider place-self-end"
+    const onCaptchaChange = (token) => {
+        setCaptchaToken(token);
+    };
+
+    const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    const captchaStyle = captchaToken ? "px-4 py-2.5 bg-button text-primary uppercase font-semibold text-xs tracking-wider place-self-end transform transition-transform hover:scale-105 duration-500" : "hidden"
 
     const handleSave = (formData) => {
         onSave(formData)
@@ -69,6 +80,15 @@ const ContactForm = ({ onSave }) => {
                     rows={10}
                 />
             </label>
+            <div className="flex justify-start lg:justify-end mb-4">
+                <ReCAPTCHA
+                    sitekey={recaptchaSiteKey}
+                    onChange={onCaptchaChange}
+                />
+            </div>
+            <div className="flex justify-start lg:justify-end">
+                <button className={captchaStyle} type="submit" disabled={!captchaToken}> Verzenden </button>
+            </div> 
             <div className="flex flex-col p-5">
                 {errors.name && (
                     <span className="text-red-500"> - Name field is required </span>
@@ -80,9 +100,6 @@ const ContactForm = ({ onSave }) => {
                     <span className="text-red-500"> - Message field is required </span>
                 )}
             </div>
-            <div className="flex justify-center lg:justify-end">
-                <button className={captchaStyle} type="submit"> Verzenden </button>
-            </div> 
         </form>
     )
 }
