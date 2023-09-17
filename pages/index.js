@@ -8,8 +8,15 @@ export default function Home({ portfolioItems, featuredPost, notFeaturedPost, cu
     const verifiedFeaturedPost = featuredPost.find(post => post.hotspot === true)
     const { title, subtitle, description, image, tagList, buttonText, buttonUrl } = verifiedFeaturedPost
 
-    const verifiedNotFeaturedPost = notFeaturedPost.find(post => post.hotspot === true)
-    const {title: title2, subtitle: subtitle2, description: description2, image: image2, tagList: tagList2, buttonText: buttonText2, buttonUrl: buttonUrl2 } = verifiedNotFeaturedPost
+    console.log("=====> verifiedFeaturedPost: ", verifiedFeaturedPost);
+
+    // const verifiedNotFeaturedPost = notFeaturedPost.find(post => post.hotspot === true)
+    // const {title: title2, subtitle: subtitle2, description: description2, image: image2, tagList: tagList2, buttonText: buttonText2, buttonUrl: buttonUrl2 } = verifiedNotFeaturedPost
+
+    // const verifiedNotFeaturedPost = notFeaturedPost.filter(post => post.hotspot !== true)
+    // const {title: title2, subtitle: subtitle2, description: description2, image: image2, tagList: tagList2, buttonText: buttonText2, buttonUrl: buttonUrl2 } = verifiedNotFeaturedPost
+
+    // console.log("=====> verifiedNotFeaturedPost: ", verifiedNotFeaturedPost);
 
     return (
         <>
@@ -40,7 +47,7 @@ export default function Home({ portfolioItems, featuredPost, notFeaturedPost, cu
                     buttonText={buttonText}
                 />
                 <Instagram />
-                <NotFeaturedPost
+                {/* <NotFeaturedPost
                     image={urlFor(image2).url()}
                     title={title2}
                     subtitle={subtitle2}
@@ -48,7 +55,7 @@ export default function Home({ portfolioItems, featuredPost, notFeaturedPost, cu
                     //tag={tagList2[0].title2}
                     buttonUrl={buttonUrl2}
                     buttonText={buttonText2}
-                />
+                /> */}
                 <Customers customerItems={customerItems} />
             </main>
         </>

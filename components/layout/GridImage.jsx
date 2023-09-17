@@ -37,7 +37,7 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
             {hovered ? (
                 <div className="absolute top-0 bottom-0 text-primary  group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out text-left flex flex-col justify-evenly">
                     <div
-                        className="border h-full flex flex-col justify-between items-start p-6 cursor-pointer hover:text-[#3c3c3c]"
+                        className="h-full flex flex-col justify-between items-start p-6 cursor-pointer hover:text-[#3c3c3c]"
                         onClick={() => navigateTo(`/portfolio/${id}`)}
                     >
                         {/* Title, subtitle */}

@@ -4,7 +4,7 @@ import { MultiCarousel } from "..";
 
 const Customers = ({ customerItems }) => {
     const items = customerItems?.map((item) => (
-        <div className="mt-8" key={item._id}>
+        <div key={item._id}>
             <Image
                 className=""
                 height={100}
