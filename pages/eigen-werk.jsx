@@ -21,7 +21,7 @@ export default EigenWerkPage
 
 export const getServerSideProps = async () => {
     const queryWork = `
-        *[_type == "work"]| order(_createdAt desc){
+        *[_type == "work"]| order(_createdAt asc){
             _id,
             title,
             subtitle,

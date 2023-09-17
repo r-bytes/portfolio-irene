@@ -8,7 +8,7 @@ const WorkPost = ({ items }) => {
             <div className={content.length > 3 ?
                 "mx-auto text-center p-2 sm:p-12 mt-0" : "block w-full text-center"
             }>
-                <h1 className="text-2xl font-extralight tracking-wider mb-12"> {title} </h1>
+                <h1 className="text-2xl font-extralight tracking-wider mb-12 mt-12"> {title} </h1>
                 <h3 className="tracking-wide leading-7 mt-4"> {subtitle} </h3>
                 <h3 className="tracking-wide leading-7 my-8 px-4"> {description} </h3>
             </div>
@@ -22,7 +22,7 @@ const WorkPost = ({ items }) => {
                     >
                         <h2 className="font-bold px-4 pt-10 "> {title} </h2>
                         <Image
-                            className="w-auto"
+                            className="w-72 h-96"
                             height={250}
                             width={250}
                             src={imageUrl}
@@ -43,7 +43,7 @@ const WorkPost = ({ items }) => {
     ))
 
     return (
-        <div className="max-w-5xl mx-auto my-10 flex flex-col md:flex-row flex-wrap md:justify-center md:items-center mx-auto">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row flex-wrap md:justify-center md:items-center mb-12">
             {workItems}
         </div>
     )

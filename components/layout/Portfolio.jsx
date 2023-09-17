@@ -57,6 +57,7 @@ const Portfolio = ({ portfolioItems }) => {
     let allGridItems;
 
     if (router.asPath === "/") {
+        setClickedOn("strips")
         allGridItems = gridItems
             .slice(0, 8)
             .map((p) => (
