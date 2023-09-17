@@ -17,7 +17,7 @@ const ContactPage = ({ bannerContent }) => {
     const handleSave = (formData) => {
         console.log("email send", { formData })
 
-        // emailjs
+        emailjs
         .send(
             process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, 
             process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
