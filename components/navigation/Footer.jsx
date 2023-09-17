@@ -28,58 +28,94 @@ const Footer = () => {
 
     return (
         <>
-        <div className={footerStyle}>
-            <div className="md:w-1/3 my-10">
-                <Image
-                    className="w-44 mx-auto"
-                    src={"/images/mijnlogo-white.png"}
-                    alt="heroimageB.jpg"
-                    width={150}
-                    height={150}
+            <div className={footerStyle}>
+                <div className="md:w-1/3 my-10">
+                    <Image
+                        className="w-44 mx-auto"
+                        src={"/images/mijnlogo-white.png"}
+                        alt="heroimageB.jpg"
+                        width={150}
+                        height={150}
                     />
+                </div>
+                <div className="md:w-2/3 mt-10 tracking-wider text-center md:text-left justify-center items-center gap-4">
+                    <h3 className="text-lg text-accent mb-10">
+                        {" "}
+                        Beschikbaar voor: bedrijfs illustraties, editorial
+                        illustraties, strips, Character design en Artwork in
+                        opdracht.{" "}
+                    </h3>
+                    <div className="flex flex-col text-accent justify-center items-center md:justify-start md:items-start gap-4">
+                        {" "}
+                        {/* Icon Container*/}
+                        <span className="block">
+                            <MdOutlineEmail className="inline-block mr-2" />
+                            <a
+                                href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
+                                className="hover:text-neutral-300 cursor-pointer text-white text-xs inline-block"
+                            >
+                                {" "}
+                                {process.env.NEXT_PUBLIC_EMAIL}{" "}
+                            </a>
+                        </span>
+                        <span className="block">
+                            <BsFillTelephoneFill className="inline-block mr-2" />
+                            <h4 className="text-white text-xs inline-block">
+                                {" "}
+                                {process.env.NEXT_PUBLIC_TELEPHONE}{" "}
+                            </h4>
+                        </span>
+                        <span className="flex mt-2 text-xs">
+                            <IoIosBusiness className="text-lg inline-block mr-2" />
+                            <h4 className="text-white">
+                                KVK: {process.env.NEXT_PUBLIC_KVK}
+                            </h4>
+                        </span>
+                    </div>
+                </div>
+                <div className="md:w-1/3 flex justify-center mt-14">
+                    {socialUrls.map((s) => (
+                        <IconButton
+                            key={s.id}
+                            style={{ borderRadius: "0px", padding: "0px" }}
+                        >
+                            <SocialIcon
+                                style={{
+                                    height: 40,
+                                    width: 40,
+                                    marginRight: "1em",
+                                }}
+                                bgColor={"white"}
+                                // fgColor={"black"}
+                                url={s.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            />
+                        </IconButton>
+                    ))}
+                    <a
+                        target="_blank"
+                        href="https://ireneberbee.myportfolio.com"
+                        rel="noopener noreferrer"
+                    >
+                        <AiFillBehanceCircle
+                            target="_blank"
+                            color="white"
+                            size={48}
+                            className="cursor-pointer"
+                        />
+                    </a>
+                </div>
             </div>
-            <div className="md:w-2/3 mt-10 tracking-wider text-center md:text-left justify-center items-center gap-4">
-                <h3 className="text-lg text-accent mb-10"> Beschikbaar voor: bedrijfs illustraties, editorial illustraties, strips, Character design en Artwork in opdracht.  </h3>
-                <div className="flex flex-col text-accent justify-center items-center md:justify-start md:items-start gap-4"> {/* Icon Container*/}
-                    <span className="block">
-                        <MdOutlineEmail className="inline-block mr-2" />
-                        <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="hover:text-neutral-300 cursor-pointer text-white text-xs inline-block"> {process.env.NEXT_PUBLIC_EMAIL} </a>
-                    </span>
-                    <span className="block">
-                        <BsFillTelephoneFill className="inline-block mr-2" />
-                        <h4 className="text-white text-xs inline-block"> {process.env.NEXT_PUBLIC_TELEPHONE} </h4>
-                    </span>
-                    <span className="flex mt-2 text-xs">
-                        <IoIosBusiness className="text-lg inline-block mr-2"/>
-                        <h4 className="text-white">KVK: {process.env.NEXT_PUBLIC_KVK}</h4>
+            <div className={footerStyle}>
+                <div>
+                    <span className="text-xs text-white font-thin">© </span>
+                    <span className="text-white text-xs text-center w-full tracking-wider">
+                        Irene Berbee
                     </span>
                 </div>
             </div>
-            <div className="md:w-1/3 flex justify-center mt-14">
-                {socialUrls.map(s => (
-                    <IconButton key={s.id} style={{ borderRadius: "0px", padding: "0px"}}>
-                        <SocialIcon
-                            style={{ height: 40, width: 40, marginRight: "1em" }}
-                            bgColor={"white"}
-                            // fgColor={"black"}
-                            url={s.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            />
-                    </IconButton>
-                                      
-                ))}
-                <a target="_blank" href="https://ireneberbee.myportfolio.com" rel="noopener noreferrer">
-                    <AiFillBehanceCircle target="_blank" color="white" size={48} className="cursor-pointer" />
-                </a>
-            </div>
-        </div>
-        <div className={footerStyle}>
-            <span className="text-white text-xs text-center w-full">
-                Art by Irene Berbee
-            </span>
-        </div>
         </>
-    )
+    );
 }
 export default Footer
