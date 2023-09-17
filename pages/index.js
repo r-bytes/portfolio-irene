@@ -21,8 +21,6 @@ export default function Home({
     const { title, subtitle, description, image, buttonText, buttonUrl } =
         verifiedFeaturedPost;
 
-    console.log("=====> verifiedFeaturedPost: ", verifiedFeaturedPost);
-
     const verifiedNotFeaturedPost = notFeaturedPost.find(
         (post) => post.hotspot === true
     );
@@ -32,8 +30,6 @@ export default function Home({
             setClickedOn("strips");
         }
     }, []);
-
-    console.log("=====> verifiedNotFeaturedPost: ", verifiedNotFeaturedPost);
 
     return (
         <>

@@ -24,18 +24,14 @@ const Instagram = () => {
             const response = await axios.get(`https://graph.instagram.com/me/media?fields=username,media_count,media_type,permalink,media_url,caption&&access_token=${process.env.NEXT_PUBLIC_INSTA}`)
             setPosts(response.data.data)
             setUsername(response.data.data[0].username)
-            // console.log(response.data.data)
         })()
     }, [])
 
     const instagramItems = posts.filter(p => p.media_type === "IMAGE")
-    console.log("===> instagramItems", instagramItems)
     
     const handleClick = (url) => {
         router.push(url)
     }
-
-    // console.log(instagramItems)
 
     return (
         <>
