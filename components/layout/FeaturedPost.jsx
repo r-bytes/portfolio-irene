@@ -1,7 +1,7 @@
 import { Button } from "@components/index"
 import Image from "next/image"
 
-const FeaturedPost = ({ image, title, subtitle, description, tag, buttonText, buttonUrl }) => {
+const FeaturedPost = ({ image, title, subtitle, description, buttonText, buttonUrl }) => {
     return (
         <div className="w-full md:h-[28rem] flex flex-col md:flex-row">
             <div className="w-full md:w-1/2">

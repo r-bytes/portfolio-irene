@@ -1,61 +1,65 @@
-import { Button, Instagram, Portfolio, FeaturedPost } from "@components/index";
+import { Button, FeaturedPost, Instagram, Portfolio } from "@components/index";
 import Customers from "@components/layout/Customers";
 import NotFeaturedPost from "@components/layout/NotFeaturedPost";
 import Head from "next/head";
 import { sanityClient, urlFor } from "sanity";
 
-export default function Home({ portfolioItems, featuredPost, notFeaturedPost, customerItems }) {
-    const verifiedFeaturedPost = featuredPost.find(post => post.hotspot === true)
-    const { title, subtitle, description, image, tagList, buttonText, buttonUrl } = verifiedFeaturedPost
+export default function Home({
+    portfolioItems,
+    featuredPost,
+    notFeaturedPost,
+    customerItems,
+}) {
+    const verifiedFeaturedPost = featuredPost.find(
+        (post) => post.hotspot === true
+    );
+    const { title, subtitle, description, image, buttonText, buttonUrl } =
+        verifiedFeaturedPost;
 
     console.log("=====> verifiedFeaturedPost: ", verifiedFeaturedPost);
 
-    // const verifiedNotFeaturedPost = notFeaturedPost.find(post => post.hotspot === true)
-    // const {title: title2, subtitle: subtitle2, description: description2, image: image2, tagList: tagList2, buttonText: buttonText2, buttonUrl: buttonUrl2 } = verifiedNotFeaturedPost
+    const verifiedNotFeaturedPost = notFeaturedPost.find(
+        (post) => post.hotspot === true
+    );
 
-    // const verifiedNotFeaturedPost = notFeaturedPost.filter(post => post.hotspot !== true)
-    // const {title: title2, subtitle: subtitle2, description: description2, image: image2, tagList: tagList2, buttonText: buttonText2, buttonUrl: buttonUrl2 } = verifiedNotFeaturedPost
-
-    // console.log("=====> verifiedNotFeaturedPost: ", verifiedNotFeaturedPost);
+    console.log("=====> verifiedNotFeaturedPost: ", verifiedNotFeaturedPost);
 
     return (
         <>
             <Head>
                 <title> Portfolio Irene </title>
                 <meta name="description" content="Portfolio Irene" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
-                <Portfolio
-                    portfolioItems={portfolioItems.slice(1, 9)}
-                />
+                <Portfolio portfolioItems={portfolioItems} />
                 <div className="m-10 flex">
-                    <Button
-                        primary
-                        href={"/portfolio"}
-                        text={"Bekijk alles"}
-                    />
+                    <Button primary href={"/portfolio"} text={"Bekijk alles"} />
                 </div>
                 <FeaturedPost
                     image={urlFor(image).url()}
                     title={title}
                     subtitle={subtitle}
                     description={description}
-                    tag={tagList[0].title} // first tag only
                     buttonUrl={buttonUrl}
                     buttonText={buttonText}
                 />
                 <Instagram />
-                {/* <NotFeaturedPost
-                    image={urlFor(image2).url()}
-                    title={title2}
-                    subtitle={subtitle2}
-                    description={description2}
-                    //tag={tagList2[0].title2}
-                    buttonUrl={buttonUrl2}
-                    buttonText={buttonText2}
-                /> */}
+                {verifiedNotFeaturedPost ? (
+                    <NotFeaturedPost
+                        image={urlFor(verifiedNotFeaturedPost?.image2).url()}
+                        title={verifiedNotFeaturedPost?.title2}
+                        subtitle={verifiedNotFeaturedPost?.subtitle2}
+                        description={verifiedNotFeaturedPost?.description2}
+                        buttonUrl={verifiedNotFeaturedPost?.buttonUrl2}
+                        buttonText={verifiedNotFeaturedPost?.buttonText2}
+                    />
+                ) : null}
+
                 <Customers customerItems={customerItems} />
             </main>
         </>
@@ -77,35 +81,30 @@ export const getServerSideProps = async () => {
     `;
 
     const queryFeatured = `
-        *[_type == "featured" && tags[0]._ref in *[_type == "tags"]._id]{
+       *[_type == "featuredPost"]{
             _id,
             title,
             subtitle,
             description,
             hotspot,
             image,
-            "tagList": tags[0..10] -> {
-                title
-            },
             buttonUrl,
             buttonText
         }
     `;
 
     const queryNotFeatured = `
-    *[_type == "notFeaturedPost"]{
-        _id,
-        title,
-        subtitle,
-        description,
-        hotspot,
-        image,
-        "tagList": tags[0..10] -> {
-            title
-        },
-        buttonUrl,
-        buttonText
-    }`;
+        *[_type == "notFeaturedPost"]{
+            _id,
+            title,
+            subtitle,
+            description,
+            hotspot,
+            image,
+            buttonUrl,
+            buttonText
+        }
+    `;
 
     const queryCustomers = `
     *[_type == "customers"]| order(_createdAt desc){
@@ -114,18 +113,18 @@ export const getServerSideProps = async () => {
         image
     }
 `;
-    
-    const portfolioItems = await sanityClient.fetch(queryPortfolio)
-    const featuredPost = await sanityClient.fetch(queryFeatured)
-    const notFeaturedPost = await sanityClient.fetch(queryNotFeatured)
-    const customerItems = await sanityClient.fetch(queryCustomers)
-    
+
+    const portfolioItems = await sanityClient.fetch(queryPortfolio);
+    const featuredPost = await sanityClient.fetch(queryFeatured);
+    const notFeaturedPost = await sanityClient.fetch(queryNotFeatured);
+    const customerItems = await sanityClient.fetch(queryCustomers);
+
     return {
         props: {
             portfolioItems,
             featuredPost,
             notFeaturedPost,
-            customerItems
-        }
+            customerItems,
+        },
     };
 };
