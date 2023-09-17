@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react"
 const Context = createContext()
 
 export const StateContext = ({ children }) => {
-    const [clickedOn, setClickedOn] = useState("strips")
+    const [clickedOn, setClickedOn] = useState("")
     const [isOpen, setIsOpen] = useState(false)
     const [activePage, setActivePage] = useState("home")
     const [captchaDone, setCaptchaDone] = useState()

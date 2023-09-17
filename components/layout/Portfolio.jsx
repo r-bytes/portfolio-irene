@@ -31,13 +31,6 @@ const Portfolio = ({ portfolioItems }) => {
     };
 
     useEffect(() => {
-        if (router.asPath === "/portfolio") {
-            console.log(router);
-            setClickedOn("alles");
-        }
-    }, []);
-
-    useEffect(() => {
         if (clickedOn) {
             setClickedOn(clickedOn);
             handleClick(clickedOn);
@@ -45,7 +38,7 @@ const Portfolio = ({ portfolioItems }) => {
             setClickedOn("alles");
             handleClick("alles");
         }
-    }, [clickedOn]);
+    }, [clickedOn, router.asPath]);
 
     const [gridItems, setGridItems] = useState(portfolioItems);
 

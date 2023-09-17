@@ -1,7 +1,10 @@
 import { Button, FeaturedPost, Instagram, Portfolio } from "@components/index";
 import Customers from "@components/layout/Customers";
 import NotFeaturedPost from "@components/layout/NotFeaturedPost";
+import { useStateContext } from "context/StateContext";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { sanityClient, urlFor } from "sanity";
 
 export default function Home({
@@ -10,6 +13,8 @@ export default function Home({
     notFeaturedPost,
     customerItems,
 }) {
+    const router = useRouter();
+    const { setClickedOn } = useStateContext();
     const verifiedFeaturedPost = featuredPost.find(
         (post) => post.hotspot === true
     );
@@ -21,6 +26,13 @@ export default function Home({
     const verifiedNotFeaturedPost = notFeaturedPost.find(
         (post) => post.hotspot === true
     );
+
+    useEffect(() => {
+        if (router.asPath === "/") {
+            setClickedOn("strips");
+        }
+    }, []);
+
     console.log("=====> verifiedNotFeaturedPost: ", verifiedNotFeaturedPost);
 
     return (
