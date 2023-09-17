@@ -17,14 +17,14 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
 
     return (
         <div
-            className="border group mx-auto flex flex-col relative"
+            className="group mx-auto flex flex-col relative"
             ref={hoverRef}
         >
             {/* => Card Image */}
             <div className="max-w-sm max-h-sm">
                 {" "}
                 <Image
-                    className="object-cover max-h-80 w-80"
+                    className="object-cover h-96 max-w-80"
                     alt={image}
                     src={urlFor(image).url()}
                     width={500}
@@ -35,7 +35,7 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
 
             {/* Card Image Overlay */}
             {hovered ? (
-                <div className="absolute top-0 bottom-0 text-primary  group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out text-left flex flex-col justify-evenly">
+                <div className="max-w-80 w-full absolute top-0 bottom-0 text-primary group-hover:bg-primaryAccent group-hover:opacity-80 transition-transform duration-300 ease-in-out text-left flex flex-col justify-evenly">
                     <div
                         className="h-full flex flex-col justify-between items-start p-6 cursor-pointer hover:text-[#3c3c3c]"
                         onClick={() => navigateTo(`/portfolio/${id}`)}

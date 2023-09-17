@@ -21,7 +21,6 @@ export default function Home({
     const verifiedNotFeaturedPost = notFeaturedPost.find(
         (post) => post.hotspot === true
     );
-
     console.log("=====> verifiedNotFeaturedPost: ", verifiedNotFeaturedPost);
 
     return (

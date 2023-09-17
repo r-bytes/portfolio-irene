@@ -31,6 +31,13 @@ const Portfolio = ({ portfolioItems }) => {
     };
 
     useEffect(() => {
+        if (router.asPath === "/portfolio") {
+            console.log(router);
+            setClickedOn("alles");
+        }
+    }, []);
+
+    useEffect(() => {
         if (clickedOn) {
             setClickedOn(clickedOn);
             handleClick(clickedOn);
@@ -52,12 +59,13 @@ const Portfolio = ({ portfolioItems }) => {
         { id: 7, name: "eigen werk" },
         { id: 8, name: "|" },
         { id: 9, name: "in opdracht" },
+        { id: 10, name: "|" },
+        { id: 11, name: "kinderboeken" },
     ];
 
     let allGridItems;
 
     if (router.asPath === "/") {
-        setClickedOn("strips");
         allGridItems = gridItems
             .slice(0, 8)
             .map((p) => (
@@ -94,7 +102,7 @@ const Portfolio = ({ portfolioItems }) => {
             <div className="w-full bg-primaryAccent min-h-10 flex justify-center items-center">
                 {" "}
                 {/* => FilterBanner */}
-                <ul className="h-full w-full p-2 flex flex-wrap justify-center space-x-3 items-center max-w-lg">
+                <ul className="h-full w-full p-2 flex flex-wrap justify-center space-x-3 items-center max-w-3xl">
                     <span className="text-[#000]/50"> filter: </span>
                     {tagList?.map(
                         (
@@ -121,6 +129,8 @@ const Portfolio = ({ portfolioItems }) => {
                                                 ? `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-140%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent`
                                                 : tag.name === "strips"
                                                 ? `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-110%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent`
+                                                : tag.name === "kinderboeken"
+                                                ? `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-190%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent`
                                                 : `hidden sm:inline-block absolute top-8 border-l-[20px] translate-x-[-100%] border-l-transparent border-t-[7px] border-t-accent border-r-[20px] border-r-transparent`
                                         }
                                     />
