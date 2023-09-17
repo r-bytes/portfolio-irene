@@ -17,10 +17,10 @@ const WorkPost = ({ items }) => {
             }>
                 {content.map(({_id, imageUrl, title, buttonText, buttonUrl}, index) => (
                     <div
-                        className="flex flex-col justify-center items-center gap-4 pb-6 mx-auto"
+                        className="flex flex-col justify-center items-center gap-4 pb-6 mx-auto w-80"
                         key={index}
                     >
-                        <h2 className="font-bold px-4 pt-10 "> {title} </h2>
+                        <h2 className="font-bold px-4 pt-10 h-24"> {title} </h2>
                         <Image
                             className="w-72 h-96"
                             height={250}
