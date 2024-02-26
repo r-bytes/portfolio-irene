@@ -1,4 +1,4 @@
-import { Button, FeaturedPost, Instagram, Portfolio } from "@components/index";
+import { Button, FeaturedPost, Portfolio } from "@components/index";
 import Customers from "@components/layout/Customers";
 import NotFeaturedPost from "@components/layout/NotFeaturedPost";
 import { useStateContext } from "context/StateContext";
@@ -7,23 +7,25 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { sanityClient, urlFor } from "sanity";
 
-export default function Home({
-    portfolioItems,
-    featuredPost,
-    notFeaturedPost,
-    customerItems,
-}) {
+export default function Home({ portfolioItems, featuredPost, notFeaturedPost, customerItems }) {
     const router = useRouter();
     const { setClickedOn } = useStateContext();
-    const verifiedFeaturedPost = featuredPost.find(
-        (post) => post.hotspot === true
-    );
-    const { title, subtitle, description, image, buttonText, buttonUrl } =
-        verifiedFeaturedPost;
 
-    const verifiedNotFeaturedPost = notFeaturedPost.find(
-        (post) => post.hotspot === true
-    );
+    // featured post
+    const verifiedFeaturedPost = featuredPost.find((post) => post.hotspot === true);
+    const { title, subtitle, description, image, buttonText, buttonUrl, bgColor } = verifiedFeaturedPost;
+
+    // not fetured post
+    const verifiedNotFeaturedPost = notFeaturedPost.find((post) => post.image);
+    const {
+        title: title2,
+        subtitle: subtitle2,
+        description: description2,
+        image: image2,
+        buttonText: buttonText2,
+        buttonUrl: buttonUrl2,
+        bgColor: bgColor2
+    } = verifiedNotFeaturedPost;
 
     useEffect(() => {
         if (router.asPath === "/") {
@@ -36,10 +38,7 @@ export default function Home({
             <Head>
                 <title> Portfolio Irene </title>
                 <meta name="description" content="Portfolio Irene" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
@@ -54,18 +53,20 @@ export default function Home({
                     description={description}
                     buttonUrl={buttonUrl}
                     buttonText={buttonText}
+                    bgColor={bgColor}
                 />
-                <Instagram />
-                {verifiedNotFeaturedPost ? (
-                    <NotFeaturedPost
-                        image={urlFor(verifiedNotFeaturedPost?.image2).url()}
-                        title={verifiedNotFeaturedPost?.title2}
-                        subtitle={verifiedNotFeaturedPost?.subtitle2}
-                        description={verifiedNotFeaturedPost?.description2}
-                        buttonUrl={verifiedNotFeaturedPost?.buttonUrl2}
-                        buttonText={verifiedNotFeaturedPost?.buttonText2}
-                    />
-                ) : null}
+                {/* <Instagram /> */}
+                {/* {verifiedNotFeaturedPost && ( */}
+                <NotFeaturedPost
+                    image={urlFor(image2).url()}
+                    title={title2}
+                    subtitle={subtitle2}
+                    description={description2}
+                    buttonUrl={buttonUrl2}
+                    buttonText={buttonText2}
+                    bgColor={bgColor2}
+                />
+                {/* )} */}
 
                 <Customers customerItems={customerItems} />
             </main>
@@ -96,7 +97,8 @@ export const getServerSideProps = async () => {
             hotspot,
             image,
             buttonUrl,
-            buttonText
+            buttonText,
+            bgColor
         }
     `;
 
@@ -106,10 +108,10 @@ export const getServerSideProps = async () => {
             title,
             subtitle,
             description,
-            hotspot,
             image,
             buttonUrl,
-            buttonText
+            buttonText,
+            bgColor
         }
     `;
 
