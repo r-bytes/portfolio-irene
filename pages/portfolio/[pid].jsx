@@ -19,7 +19,7 @@ const PortfolioItem = ({ portfolioItem }) => {
                 <h3 className="font-light"> {description} </h3>
 
                 <div className="m-10">
-                    <Image className="mx-auto" width={750} height={750} alt={title} src={urlFor(image).url()} />
+                    <Image className="mx-auto" priority={true} width={500} height={500} alt={title} src={urlFor(image).url()} />
                 </div>
 
                 <div className="flex flex-wrap gap-3 justify-center mb-10">
