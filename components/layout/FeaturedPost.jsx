@@ -7,10 +7,15 @@ const FeaturedPost = ({ image, title, subtitle, description, buttonText, buttonU
             <div className="w-full md:w-1/2">
                 <Image src={image} alt={image} className="h-96 md:h-full w-full object-cover object-left-bottom" width={500} height={500} />
             </div>
-            <div className={bgColor ? `bg-[${bgColor}] w-full md:w-1/2 flex items-center` : `bg-secondary w-full md:w-1/2 flex items-center`}>
+            <div
+                style={bgColor && { backgroundColor: bgColor }}
+                className={bgColor ? `bg-[${bgColor}] w-full md:w-1/2 flex items-center` : `bg-secondary w-full md:w-1/2 flex items-center`}
+            >
                 <div
                     className={
-                        txtColor ? `text-[${txtColor}] flex flex-col items-start space-y-3 text-left p-8` : "flex flex-col items-start space-y-3 text-secondary text-left p-8"
+                        txtColor
+                            ? `text-[${txtColor}] flex flex-col items-start space-y-3 text-left p-8`
+                            : "flex flex-col items-start space-y-3 text-secondary text-left p-8"
                     }
                 >
                     <h1 className="text-5xl font-extralight"> {title} </h1>

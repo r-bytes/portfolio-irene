@@ -4,7 +4,10 @@ import Image from "next/image";
 const NotFeaturedPost = ({ image, title, subtitle, description, buttonText, buttonUrl, bgColor, txtColor }) => {
     return (
         <div className="w-full md:h-[28rem] flex flex-col md:flex-row mb-12">
-            <div className={bgColor ? `bg-[${bgColor}] w-full md:w-1/2 flex items-center` : `bg-secondary w-full md:w-1/2 flex items-center`}>
+            <div
+                style={bgColor && { backgroundColor: bgColor }}
+                className={bgColor ? `bg-[${bgColor}] w-full md:w-1/2 flex items-center` : `bg-secondary w-full md:w-1/2 flex items-center`}
+            >
                 <div
                     className={
                         txtColor
