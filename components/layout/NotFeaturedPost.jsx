@@ -1,6 +1,5 @@
 import { Button } from "@components/index";
 import Image from "next/image";
-import { useEffect } from "react";
 
 const NotFeaturedPost = ({ image, title, subtitle, description, buttonText, buttonUrl, bgColor, txtColor }) => {
     return (
@@ -8,7 +7,9 @@ const NotFeaturedPost = ({ image, title, subtitle, description, buttonText, butt
             <div className={bgColor ? `bg-[${bgColor}] w-full md:w-1/2 flex items-center` : `bg-secondary w-full md:w-1/2 flex items-center`}>
                 <div
                     className={
-                        txtColor ? `text-[${txtColor}] flex flex-col items-start space-y-3 text-left p-8` : "flex flex-col items-start space-y-3 text-secondary text-left p-8"
+                        txtColor
+                            ? `text-[${txtColor}] flex flex-col items-start space-y-3 text-left p-8`
+                            : "flex flex-col items-start space-y-3 text-secondary text-left p-8"
                     }
                 >
                     <h1 className="text-5xl font-extralight"> {title} </h1>
