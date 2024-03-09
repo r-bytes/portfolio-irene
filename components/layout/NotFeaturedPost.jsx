@@ -21,7 +21,7 @@ const NotFeaturedPost = ({ image, title, subtitle, description, buttonText, butt
                     <div className="flex gap-1 justify-center items-center">
                         {
                             // show button only when button text exists
-                            buttonText?.length ? <Button text={buttonText} href={buttonUrl} primary /> : ""
+                            buttonText?.length ? <Button ext text={buttonText} href={buttonUrl} primary /> : ""
                         }
                     </div>
                 </div>
