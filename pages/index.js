@@ -13,7 +13,7 @@ export default function Home({ portfolioItems, featuredPost, notFeaturedPost, cu
 
     // featured post
     const verifiedFeaturedPost = featuredPost.find((post) => post.hotspot === true);
-    const { title, subtitle, description, image, buttonText, buttonUrl, bgColor } = verifiedFeaturedPost;
+    const { title, subtitle, description, image, buttonText, buttonUrl, bgColor, txtColor } = verifiedFeaturedPost;
 
     // not fetured post
     const verifiedNotFeaturedPost = notFeaturedPost.find((post) => post.image);
@@ -24,7 +24,8 @@ export default function Home({ portfolioItems, featuredPost, notFeaturedPost, cu
         image: image2,
         buttonText: buttonText2,
         buttonUrl: buttonUrl2,
-        bgColor: bgColor2
+        bgColor: bgColor2,
+        txtColor: txtColor2,
     } = verifiedNotFeaturedPost;
 
     useEffect(() => {
@@ -43,7 +44,7 @@ export default function Home({ portfolioItems, featuredPost, notFeaturedPost, cu
             </Head>
             <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
                 <Portfolio portfolioItems={portfolioItems} />
-                <div className="m-10 flex">
+                <div className="m-20 flex">
                     <Button primary href={"/portfolio"} text={"Bekijk alles"} />
                 </div>
                 <FeaturedPost
@@ -54,20 +55,21 @@ export default function Home({ portfolioItems, featuredPost, notFeaturedPost, cu
                     buttonUrl={buttonUrl}
                     buttonText={buttonText}
                     bgColor={bgColor}
+                    txtColor={txtColor}
                 />
                 {/* <Instagram /> */}
-                {/* {verifiedNotFeaturedPost && ( */}
-                <NotFeaturedPost
-                    image={urlFor(image2).url()}
-                    title={title2}
-                    subtitle={subtitle2}
-                    description={description2}
-                    buttonUrl={buttonUrl2}
-                    buttonText={buttonText2}
-                    bgColor={bgColor2}
-                />
-                {/* )} */}
-
+                {verifiedNotFeaturedPost && (
+                    <NotFeaturedPost
+                        image={urlFor(image2).url()}
+                        title={title2}
+                        subtitle={subtitle2}
+                        description={description2}
+                        buttonUrl={buttonUrl2}
+                        buttonText={buttonText2}
+                        bgColor={bgColor2}
+                        txtColor={txtColor2}
+                    />
+                )}
                 <Customers customerItems={customerItems} />
             </main>
         </>
@@ -98,7 +100,8 @@ export const getServerSideProps = async () => {
             image,
             buttonUrl,
             buttonText,
-            bgColor
+            bgColor,
+            txtColor
         }
     `;
 
@@ -111,7 +114,8 @@ export const getServerSideProps = async () => {
             image,
             buttonUrl,
             buttonText,
-            bgColor
+            bgColor,
+            txtColor
         }
     `;
 

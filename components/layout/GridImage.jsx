@@ -47,9 +47,9 @@ const GridImage = ({ id, title, subtitle, image, description, tags }) => {
                                 {title}{" "}
                             </h1>
                             <h3 className="text-sm mb-2"> {subtitle} </h3>
-                        </div>
                         {/* Description */}
-                        <p className="mb-3 leading-5 text-sm">{description}</p>
+                        <p className="my-4 leading-5 text-sm">{description}</p>
+                        </div>
 
                         {/* Tags */}
                         <div className="flex flex-wrap gap-3">

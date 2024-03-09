@@ -30,6 +30,7 @@ const MultiCarousel = ({ items }) => {
             infinite
             showDots
             swipeable
+            draggable
             renderButtonGroupOutside
         >
             {items}

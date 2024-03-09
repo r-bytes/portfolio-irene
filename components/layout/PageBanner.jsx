@@ -15,10 +15,6 @@ const PageBanner = ({ title, description }) => {
                     </React.Fragment>
                 ))}
             </p>
-            {activePage === "portfolio" ?
-                <>
-                    Neem dan contact met mij op via dit <a href="https://demo-irene.r-bytes.com/contact" className="cursor-pointer hover:underline">contactformulier</a>.
-                </> : null}
         </div>
     )
 }

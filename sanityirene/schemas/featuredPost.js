@@ -54,6 +54,12 @@ export default {
       type: 'string',
       description: `Example: #c3c3c3`,
     },
+    {
+      name: 'txtColor',
+      title: 'Tekst kleur',
+      type: 'string',
+      description: `Example: #000000`,
+    },
   ],
 }
   
