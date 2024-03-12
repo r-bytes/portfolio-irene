@@ -68,6 +68,6 @@ export const getServerSideProps = async () => {
         props: {
             bannerContent,
         },
-        revalidate: 10,
+        // revalidate: 10,
     };
 };

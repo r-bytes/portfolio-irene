@@ -139,7 +139,7 @@ export const getServerSideProps = async () => {
             notFeaturedPost,
             customerItems,
         },
-        revalidate: 10,
+        // revalidate: 10,
     };
 };
 

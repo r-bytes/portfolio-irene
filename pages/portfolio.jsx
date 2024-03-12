@@ -44,6 +44,6 @@ export const getServerSideProps = async () => {
             portfolioItems,
             bannerContent,
         },
-        revalidate: 10,
+        // revalidate: 10,
     };
 };
