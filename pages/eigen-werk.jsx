@@ -48,6 +48,7 @@ export const getServerSideProps = async () => {
         props: {
             workItems,
             bannerContent
-        }
+        },
+        revalidate: 10,
     };
 };

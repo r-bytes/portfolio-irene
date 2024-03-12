@@ -42,7 +42,8 @@ export const getServerSideProps = async () => {
     return {
         props: {
             portfolioItems,
-            bannerContent
-        }
+            bannerContent,
+        },
+        revalidate: 10,
     };
 };

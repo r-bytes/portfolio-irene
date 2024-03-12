@@ -67,5 +67,6 @@ export const getServerSideProps = async ({ params: { pid } }) => {
         props: {
             portfolioItem,
         },
+        revalidate: 10,
     };
 };
