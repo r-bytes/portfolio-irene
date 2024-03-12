@@ -139,8 +139,6 @@ export const getServerSideProps = async () => {
             notFeaturedPost,
             customerItems,
         },
-        // revalidate: 10,
+        revalidate: 60,
     };
 };
-
-export const dynamic = "force-dynamic";
