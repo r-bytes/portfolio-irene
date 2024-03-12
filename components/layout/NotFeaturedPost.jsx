@@ -9,6 +9,7 @@ const NotFeaturedPost = ({ image, title, subtitle, description, buttonText, butt
                 className={bgColor ? `bg-[${bgColor}] w-full md:w-1/2 flex items-center` : `bg-secondary w-full md:w-1/2 flex items-center`}
             >
                 <div
+                    style={txtColor && { color: txtColor }}
                     className={
                         txtColor
                             ? `text-[${txtColor}] flex flex-col items-start space-y-3 text-left p-8`

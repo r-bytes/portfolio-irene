@@ -17,6 +17,7 @@ const FeaturedPost = ({ image, title, subtitle, description, buttonText, buttonU
                             ? `text-[${txtColor}] flex flex-col items-start space-y-3 text-left p-8`
                             : "flex flex-col items-start space-y-3 text-secondary text-left p-8"
                     }
+                    style={txtColor && { color: txtColor }}
                 >
                     <h1 className="text-5xl font-extralight"> {title} </h1>
                     <h3 className="font-thin pb-8"> {subtitle} </h3>
